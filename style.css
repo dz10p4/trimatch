@@ -94,11 +94,9 @@ h1 {
 }
 
 .logo {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width:100px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
   height: 100px;
-  margin-bottom: 50px;
-  margin-right: 20px;
 }
