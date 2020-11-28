@@ -1,1 +1,2 @@
-# dachu zesrany
+# readme
+nie ma readme
