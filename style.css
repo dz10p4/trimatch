@@ -92,3 +92,13 @@ h1 {
 .single-field {
   transition: all 0.3s ease-in-out;
 }
+
+.logo {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width:100px;
+  height: 100px;
+  margin-bottom: 50px;
+  margin-right: 20px;
+}
