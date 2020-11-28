@@ -89,8 +89,53 @@ h1 {
   border: 1px solid rgba(213, 213, 213, 0);
 }
 
-.single-field {
+.small-field-right:placeholder-shown {
+  border-width: 0 0 0 1px;
+  box-shadow: none;
+  background: #e8e8e8;
+}
+
+.small-field-left:placeholder-shown {
+  border-width: 0 1px 0 0;
+  box-shadow: none;
+  background: #e8e8e8;
+}
+
+input {
   transition: all 0.3s ease-in-out;
+}
+
+.small-field-right {
+  width: 250px;
+  height: 45px;
+  border: 1px solid rgba(213, 213, 213, 1);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 0px 10px 10px 0px;
+  padding: 10px 20px 10px 20px;
+  outline: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  color: #000000;
+  margin-left: -4px;
+}
+
+.small-field-left {
+  width: 250px;
+  height: 45px;
+  border: 1px solid rgba(213, 213, 213, 1);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px 0px 0px 10px;
+  padding: 10px 20px 10px 20px;
+  outline: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  color: #000000;
 }
 
 .logo {
@@ -99,4 +144,26 @@ h1 {
   right: 20px;
   width: 100px;
   height: 100px;
+}
+
+input,
+button {
+  margin-top: 20px;
+}
+
+.primary-button {
+  background: #e64623;
+  border-radius: 10px;
+  border: none;
+  width: 500px;
+  height: 45px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.primary-button:hover {
+  cursor: pointer;
+  background: #e75a3a;
 }
