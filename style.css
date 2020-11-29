@@ -186,3 +186,7 @@ label {
   margin-left: 10px;
   user-select: none;
 }
+
+a:visited {
+  color: blue;
+}
