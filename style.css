@@ -180,3 +180,9 @@ button {
 .consent-container {
   display: flex;
 }
+
+p {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 14px;
+}
