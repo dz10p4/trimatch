@@ -184,4 +184,5 @@ label {
   font-weight: 300;
   font-size: 14px;
   margin-left: 10px;
+  user-select: none;
 }
