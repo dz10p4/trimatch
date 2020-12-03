@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trimatch</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -12,10 +13,23 @@
 </head>
 
 <body>
+    <div class="navbar">
+        <img src="reindeer.jpg" alt="reindeer" class="reindeer">
+        <div class="text-container">
+            <h2>ŚWIĄTECZNY</h2>
+            <h1>TRIMATCH</h1>
+        </div>
+    </div>
     <div class="main-layout">
         <img src="illustration.jpg" alt="illustration" class="illustration">
         <div class="form-section">
-            <img src="reindeer.jpg" alt="reindeer" class="reindeer">
+            <div class="top-bar">
+                <img src="reindeer.jpg" alt="reindeer" class="reindeer">
+                <div class="text-container">
+                    <h2>ŚWIĄTECZNY</h2>
+                    <h1>TRIMATCH</h1>
+                </div>
+            </div>
             <div class="form">
                 <div class="double-field">
                     <input type="text" class="small-field-left" placeholder="Imię">
@@ -25,7 +39,7 @@
                 <input type="email" class="single-field" placeholder="E-mail">
                 <div class="double-field">
                     <input type="text" class="small-field-left" placeholder="Ulica">
-                    <input type="text" class="small-field-right" placeholder="Numer budynku/Mieszkania">
+                    <input type="text" class="small-field-right" placeholder="Numer">
                 </div>
                 <div class="double-field">
                     <input type="text" class="small-field-left" placeholder="Miasto">
@@ -38,11 +52,7 @@
                 </div>
                 <button type="button" class="primary-button">ZAREJESTRUJ SIĘ</button>
             </div>
-            <div class="text-container">
-                <h2>ŚWIĄTECZNY</h2>
-                <h1>TRIMATCH</h1>
-            </div>
-            <img class="logo" src="logo3lo.svg">
+            <img class="big-logo" src="logo3lo.svg">
         </div>
     </div>
     <script src="scripts.js"></script>
