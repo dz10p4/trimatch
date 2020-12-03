@@ -263,9 +263,7 @@ label {
     height: calc(100vh - 75px);
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 90% 10%;
-    animation: slide-in 1s ease-in 1.5s;
-    animation-fill-mode: forwards;
+    grid-template-rows: 10% 90%;
   }
 
   .illustration {
@@ -281,10 +279,13 @@ label {
     grid-column: 1;
     grid-row: 2;
     width: 100vw;
-    height: 100%;
+    height: 10%;
     border-radius: 25px 25px 0px 0px;
     display: grid;
     grid-template-columns: 1fr;
+    animation: slide-in 1s ease-in-out 1.5s;
+    animation-fill-mode: forwards;
+    align-self: end;
   }
 
   .big-logo {
@@ -295,7 +296,7 @@ label {
     width: min(500px, 90vw);
     margin-top: 40px;
     opacity: 0;
-    animation: reveal 1s ease-in-out 2s;
+    animation: reveal 1s ease-in 2s;
     animation-fill-mode: forwards;
   }
 
@@ -307,11 +308,11 @@ label {
 
   @keyframes slide-in {
     from {
-      grid-template-rows: 90% 10%;
+      height: 10%;
     }
 
     to {
-      grid-template-rows: 10% 90%;
+      height: 100%;
     }
   }
 
