@@ -208,10 +208,6 @@ label {
   display: none;
 }
 
-.tree {
-  display: none;
-}
-
 @media only screen and (max-width: 767px) {
   .navbar {
     display: flex;
@@ -298,12 +294,6 @@ label {
     opacity: 0;
     animation: reveal 1s ease-in 2s;
     animation-fill-mode: forwards;
-  }
-
-  .tree {
-    display: block;
-    height: 20%;
-    justify-self: center;
   }
 
   @keyframes slide-in {
