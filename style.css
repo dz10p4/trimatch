@@ -223,6 +223,7 @@ label {
     flex-direction: row;
     height: 75px;
     background: white;
+    z-index: 3;
   }
 
   h2 {
