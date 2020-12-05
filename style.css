@@ -222,6 +222,7 @@ label {
     width: 100vw;
     flex-direction: row;
     height: 75px;
+    background: white;
   }
 
   h2 {
