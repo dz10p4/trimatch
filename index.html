@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
 </head>
 
 <body>
@@ -32,25 +35,25 @@
             </div>
             <div class="form">
                 <div class="double-field">
-                    <input type="text" class="small-field-left" placeholder="Imię">
-                    <input type="text" class="small-field-right" placeholder="Nazwisko">
+                    <input type="text" class="small-field-left" placeholder="Imię" id="name">
+                    <input type="text" class="small-field-right" placeholder="Nazwisko" id="surname">
                 </div>
-                <input type="classprofile" class="single-field" placeholder="Klasa">
-                <input type="email" class="single-field" placeholder="E-mail">
+                <input type="classprofile" class="single-field" placeholder="Klasa" id="group">
+                <input type="email" class="single-field" placeholder="E-mail" id="email">
                 <div class="double-field">
-                    <input type="text" class="small-field-left" placeholder="Ulica">
-                    <input type="text" class="small-field-right" placeholder="Numer">
+                    <input type="text" class="small-field-left" placeholder="Ulica" id="street">
+                    <input type="text" class="small-field-right" placeholder="Numer" id="number">
                 </div>
                 <div class="double-field">
-                    <input type="text" class="small-field-left" placeholder="Miasto">
-                    <input type="text" class="small-field-right" placeholder="Kod pocztowy">
+                    <input type="text" class="small-field-left" placeholder="Miasto" id="city">
+                    <input type="text" class="small-field-right" placeholder="Kod pocztowy" id="postal-code">
                 </div>
                 <div class="consent-container">
                     <input type="checkbox" id="consent" name="consent">
                     <label for="consent">Zapoznał*m się z <a href="regulamin.html" target="_blank">regulaminem</a> oraz zobowiązuję się do wysłania kartki
                     przydzielonej sobie osobie.</label>
                 </div>
-                <button type="button" class="primary-button">ZAREJESTRUJ SIĘ</button>
+                <button class="primary-button" id="submit-button">ZAREJESTRUJ SIĘ</button>
             </div>
             <img class="big-logo" src="logo3lo.svg">
         </div>
