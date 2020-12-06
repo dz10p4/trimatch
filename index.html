@@ -38,7 +38,36 @@
                     <input type="text" class="small-field-left" placeholder="Imię" id="name">
                     <input type="text" class="small-field-right" placeholder="Nazwisko" id="surname">
                 </div>
-                <input type="classprofile" class="single-field" placeholder="Klasa" id="group">
+                <select name="classes" id="classes" onchange="updateStyle()" class="disabledSelect">
+                    <option class="placeholder" selected disabled value="">Wybierz klasę</option>
+                    <option value="1nc">1 Nc</option>
+                    <option value="1ne">1 Ne</option>
+                    <option value="1nh">1 Nh</option>
+                    <option value="1nm">1 Nm</option>
+                    <option value="1np">1 Np</option>
+                    <option value="1nz">1 Nz</option>
+                    <option value="2nb">2 Nb</option>
+                    <option value="2nc">2 Nc</option>
+                    <option value="2ne">2 Ne</option>
+                    <option value="2nh">2 Nh</option>
+                    <option value="2nm">2 Nm</option>
+                    <option value="2np">2 Np</option>
+                    <option value="2nz">2 Nz</option>
+                    <option value="2lb">2 Lb</option>
+                    <option value="2lc">2 Lc</option>
+                    <option value="2le">2 Le</option>
+                    <option value="2lh">2 Lh</option>
+                    <option value="2lm">2 Lm</option>
+                    <option value="2lp">2 Lp</option>
+                    <option value="2ib">2 IB</option>
+                    <option value="3lb">3 Lb</option>
+                    <option value="3lc">3 Lc</option>
+                    <option value="3le">3 Le</option>
+                    <option value="3lh">3 Lh</option>
+                    <option value="3lm">3 Lm</option>
+                    <option value="3lp">3 Lp</option>
+                    <option value="3ib">3 IB</option>
+                </select>
                 <input type="email" class="single-field" placeholder="E-mail" id="email">
                 <div class="double-field">
                     <input type="text" class="small-field-left" placeholder="Ulica" id="street">

@@ -16,7 +16,7 @@ var firestore = firebase.firestore();
 const collRef = firestore.collection("people");
 const name = document.querySelector("#name").value;
 const surname = document.querySelector("#surname").value;
-const group = document.querySelector("#group").value;
+const classSelect = document.querySelector("#classes");
 const email = document.querySelector("#email").value;
 const street = document.querySelector("#street").value;
 const number = document.querySelector("#number").value;
@@ -30,7 +30,7 @@ submitButton.addEventListener("click", () => {
     .set({
       firstName: name,
       lastName: surname,
-      class: group,
+      class: classSelect.value,
       email: email,
       street: street,
       streetNumber: number,
@@ -44,3 +44,9 @@ submitButton.addEventListener("click", () => {
       console.log("Error: ", error);
     });
 });
+
+function updateStyle() {
+  if (classSelect.value != "") {
+    classSelect.classList.remove("disabledSelect");
+  }
+}
