@@ -14,17 +14,17 @@ firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
 const collRef = firestore.collection("people");
-const name = document.querySelector("#name").value;
-const surname = document.querySelector("#surname").value;
-const classSelect = document.querySelector("#classes");
-const email = document.querySelector("#email").value;
-const street = document.querySelector("#street").value;
-const number = document.querySelector("#number").value;
-const city = document.querySelector("#city").value;
-const postalCode = document.querySelector("#postal-code").value;
 const submitButton = document.querySelector("#submit-button");
 
 function addDocument() {
+  const name = document.querySelector("#name").value;
+  const surname = document.querySelector("#surname").value;
+  const classSelect = document.querySelector("#classes");
+  const email = document.querySelector("#email").value;
+  const street = document.querySelector("#street").value;
+  const number = document.querySelector("#number").value;
+  const city = document.querySelector("#city").value;
+  const postalCode = document.querySelector("#postal-code").value;
   collRef
     .doc(classSelect.value + " " + name + " " + surname)
     .set({
