@@ -122,6 +122,10 @@ h1 {
   background: #e8e8e8;
 }
 
+input:placeholder-shown {
+  color: #9a9a9a;
+}
+
 input,
 button {
   transition: all 0.3s ease-in-out;
@@ -243,7 +247,7 @@ select {
   box-shadow: none;
   background: #e8e8e8;
   border: 1px solid rgba(213, 213, 213, 0);
-  color: #6b6b6b;
+  color: #9a9a9a;
   background-image: url(./arrow-down.svg);
   background-repeat: no-repeat, repeat;
   background-position: right 0.7em top 50%, 0 0;

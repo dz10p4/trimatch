@@ -26,7 +26,7 @@ const submitButton = document.querySelector("#submit-button");
 
 submitButton.addEventListener("click", () => {
   collRef
-    .doc(group + " " + name + " " + surname)
+    .doc(classSelect.value + " " + name + " " + surname)
     .set({
       firstName: name,
       lastName: surname,
