@@ -14,28 +14,28 @@ firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
 const collRef = firestore.collection("people");
+const name = document.querySelector("#name");
+const surname = document.querySelector("#surname");
+const classSelect = document.querySelector("#classes");
+const email = document.querySelector("#email");
+const street = document.querySelector("#street");
+const number = document.querySelector("#number");
+const city = document.querySelector("#city");
+const postalCode = document.querySelector("#postal-code");
 const submitButton = document.querySelector("#submit-button");
 
 function addDocument() {
-  const name = document.querySelector("#name").value;
-  const surname = document.querySelector("#surname").value;
-  const classSelect = document.querySelector("#classes");
-  const email = document.querySelector("#email").value;
-  const street = document.querySelector("#street").value;
-  const number = document.querySelector("#number").value;
-  const city = document.querySelector("#city").value;
-  const postalCode = document.querySelector("#postal-code").value;
   collRef
-    .doc(classSelect.value + " " + name + " " + surname)
+    .doc(classSelect.value + " " + name.value + " " + surname.value)
     .set({
-      firstName: name,
-      lastName: surname,
+      firstName: name.value,
+      lastName: surname.value,
       class: classSelect.value,
-      email: email,
-      street: street,
-      streetNumber: number,
-      city: city,
-      postalCode: postalCode,
+      email: email.value,
+      street: street.value,
+      streetNumber: number.value,
+      city: city.value,
+      postalCode: postalCode.value,
     })
     .then(() => {
       console.log("Saved!");
