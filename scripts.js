@@ -24,7 +24,7 @@ const city = document.querySelector("#city").value;
 const postalCode = document.querySelector("#postal-code").value;
 const submitButton = document.querySelector("#submit-button");
 
-submitButton.addEventListener("click", () => {
+function addDocument() {
   collRef
     .doc(classSelect.value + " " + name + " " + surname)
     .set({
@@ -43,6 +43,11 @@ submitButton.addEventListener("click", () => {
     .catch((error) => {
       console.log("Error: ", error);
     });
+}
+
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  addDocument();
 });
 
 function updateStyle() {
