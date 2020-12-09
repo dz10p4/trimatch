@@ -366,3 +366,7 @@ select {
     }
   }
 }
+
+a:visited {
+  color:blue;
+}
