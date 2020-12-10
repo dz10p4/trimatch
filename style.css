@@ -295,6 +295,11 @@ select {
     height: -webkit-fill-available;
   }
 
+  .primary-button {
+    margin-bottom: 25px;
+  }
+
+
   h2 {
     font-weight: 500;
     font-size: 18px;
