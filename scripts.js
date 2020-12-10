@@ -39,6 +39,9 @@ function addDocument() {
     })
     .then(() => {
       console.log("Saved!");
+      const formDiv = document.querySelector(".form");
+      formDiv.style.setProperty("display", "initial");
+      formDiv.innerHTML = '<p class="message">Dziękujemy za zapisanie się do zabawy!</p><p class="message">Nie zapomnij wysłać zdjęcia kartki na <a href="mailto:trimatch@trimatch.date">trimatch@trimatch.date</a>!</p>';
     })
     .catch((error) => {
       console.log("Error: ", error);
