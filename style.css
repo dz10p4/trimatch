@@ -83,7 +83,7 @@ h1 {
   flex-direction: column;
 }
 
-.single-field,.double-field {
+.single-field,.double-field, select, .consent-container, .g-recaptcha{
   margin-top: 20px;
 }
 
