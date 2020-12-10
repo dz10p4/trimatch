@@ -3,14 +3,14 @@ html {
   overflow-x: hidden;
   margin: 0;
   height: 100vh;
-  height: -webkit-fill-available;
+  /**/
   width: 100vw;
 }
 
 .main-layout {
   width: 100vw;
   height: 100vh;
-  height: -webkit-fill-available;
+  /**/
   display: grid;
   grid-template-columns: 30% 3% 67%;
   grid-template-rows: 1fr;
@@ -18,7 +18,7 @@ html {
 
 .illustration {
   height: 100vh;
-  height: -webkit-fill-available;
+  /**/
   width: 100%;
   grid-column: 1 / 3;
   grid-row: 1;
@@ -30,7 +30,7 @@ html {
   grid-row: 1;
   width: 70vw;
   height: 100vh;
-  height: -webkit-fill-available;
+  /**/
   border-radius: 25px 0px 0px 25px;
   background-color: white;
   display: grid;
@@ -297,6 +297,10 @@ select {
     z-index: 3;
     box-shadow: 0px 1px 11px 0px rgba(0, 0, 0, 0.25);
   }
+  
+  html {
+    height: -webkit-fill-available;
+  }
 
   h2 {
     font-weight: 500;
@@ -339,14 +343,16 @@ select {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 10% 90%;
+    height: -webkit-fill-available;
   }
 
   .illustration {
-    height: 100%;
+    /*height: 100%;*/
     width: 100vw;
     grid-column: 1;
     grid-row: 1 / 4;
     object-fit: cover;
+    height: -webkit-fill-available;
   }
 
   .form-section {
@@ -361,6 +367,7 @@ select {
     animation: slide-in 1s ease-in-out 1.5s;
     animation-fill-mode: forwards;
     align-self: end;
+    height: -webkit-fill-available;
   }
 
   .big-logo {
