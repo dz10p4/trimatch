@@ -7,6 +7,17 @@ html {
   width: 100vw;
 }
 
+a {
+  color: #e64623;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #096861;
+  text-decoration: none;
+}
+
 .main-layout {
   width: 100vw;
   height: 100vh;
@@ -96,21 +107,6 @@ h1 {
   text-align: center;
   grid-row: 3;
 }
-
-.message > a {
-  color: #e64623;
-  text-decoration: none;
-}
-
-/* .message > a:visited {
-  color: #096861;
-  text-decoration: none;
-}
-
-.message > a:active {
-  color: #096861;
-  text-decoration: none;
-} */
 
 .double-field {
   width: 100%;
