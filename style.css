@@ -79,9 +79,12 @@ h1 {
   justify-self: center;
   width: clamp(400px, 60%, 500px);
   align-self: center;
-  display: grid;
-  grid-template-rows: repeat(8, 1fr);
-  grid-row-gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.single-field,.double-field {
+  margin-top: 20px;
 }
 
 .message {
