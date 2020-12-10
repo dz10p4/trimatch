@@ -80,7 +80,7 @@ h1 {
   width: clamp(400px, 60%, 500px);
   align-self: center;
   display: grid;
-  grid-template-rows: repeat(7, 1fr);
+  grid-template-rows: repeat(8, 1fr);
   grid-row-gap: 20px;
 }
 
