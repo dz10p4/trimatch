@@ -22,6 +22,7 @@ const street = document.querySelector("#street");
 const number = document.querySelector("#number");
 const city = document.querySelector("#city");
 const postalCode = document.querySelector("#postal-code");
+const consentCheckbox = document.querySelector("#consent");
 const submitButton = document.querySelector("#submit-button");
 
 function addDocument() {
@@ -50,7 +51,10 @@ function addDocument() {
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
-  addDocument();
+  if (consentCheckbox.checked && !!name.value && !!surname.value && !!classSelect.value && !!email.value && !!street.value && !!number.value && !!city.value && !!postalCode.value)
+    addDocument();
+  else
+    document.querySelector(".message-small").innerHTML = "<p>Wpisz wszystkie dane, a potem się zarejestruj.</p>";
 });
 
 function updateStyle() {
