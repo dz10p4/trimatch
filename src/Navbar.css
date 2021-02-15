@@ -1,0 +1,13 @@
+.navbar {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  z-index: 3;
+}
+
+.small-logo {
+  width: 150px;
+  padding: 20px;
+}

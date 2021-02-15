@@ -1,0 +1,36 @@
+.primary-button {
+  margin-top: 20px;
+  width: 100%;
+  height: 45px;
+  border: none;
+  background: #ff5a79;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #ffffff;
+  text-transform: uppercase;
+  max-width: 500px;
+  z-index: 5;
+}
+
+.primary-button:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .primary-button {
+    width: 85vw;
+  }
+}
+
+.disabled-button {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.disabled-button:hover {
+  cursor: default;
+}
