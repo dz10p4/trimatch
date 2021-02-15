@@ -16,7 +16,7 @@ exports.registerUser = functions.https.onCall((data, context) => {
 
   const docRef = db
     .collection("users")
-    .doc(name + "-" + surname + "-" + answers[0]);
+    .doc(name + "-" + surname + "-" + answers[1]);
 
   return docRef
     .set({

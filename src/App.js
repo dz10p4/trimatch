@@ -40,6 +40,7 @@ function App() {
     "mat-fiz",
     "mat-inf",
     "mat-pol/IB",
+    "spoza Trójki"
   ];
   const years = ["1", "2 po podstawówce", "2 po gimnazjum", "3"];
   const questions = [
@@ -88,7 +89,7 @@ function App() {
     },
     {
       type: "1",
-      name: "Ulubiona forma aktywnośći fizycznej",
+      name: "Ulubiona forma aktywności fizycznej",
       answers: [
         "Bieganie",
         "Piłka nożna",
