@@ -73,3 +73,12 @@
   top: 50%;
   left: 50%;
 }
+
+.message {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 3vh;
+  margin-left: 10px;
+  text-align: center;
+  grid-row: 3;
+}

@@ -232,13 +232,14 @@ function App() {
           )
         ) : (
           <>
-            <motion.div
+            {/* <motion.div
               className="lottie-container"
               ref={lottieContainer}
               animate={isAnimated ? { opacity: 0 } : { opacity: 1 }}
               transition={{ delay: 1.5 }}
-            />
-            <motion.div
+            /> */}
+            <p className="message">Zapisy zakończone. Dziękujemy wszystkim za wpisanie się.</p>
+            {/* <motion.div
               className="text-fields"
               animate={
                 isAnimated ? { opacity: 0, y: -50 } : { opacity: 1, y: 0 }
@@ -291,7 +292,7 @@ function App() {
                 name="Zarejestruj się"
                 isActive={isFilled}
               />
-            </motion.div>
+            </motion.div> */}
           </>
         )}
       </div>
