@@ -8,8 +8,9 @@
       "npm --prefix \"$RESOURCE_DIR\" run lint"
     ]
   },
-  "hosting": {
-    "public": "build",
+  "hosting": [ {
+    "site": "trimatch-panel",
+    "public": "panel/build",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -21,5 +22,20 @@
         "destination": "/index.html"
       }
     ]
-  }
+  },
+  {
+    "site": "trimatch-b613b",
+    "public": "form/build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  } ]
 }
