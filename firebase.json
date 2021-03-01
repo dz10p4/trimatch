@@ -37,7 +37,11 @@
         "destination": "/index.html"
       },
       {
-        "source": "/admin/*.php",
+        "source": "/admin/list.php",
+        "destination": "/admin/"
+      },
+      {
+        "source": "/admin/show.php",
         "destination": "/admin/"
       }
     ]
