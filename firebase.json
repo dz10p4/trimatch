@@ -35,6 +35,10 @@
       {
         "source": "**",
         "destination": "/index.html"
+      },
+      {
+        "source": "/admin/*.php",
+        "destination": "/admin/"
       }
     ]
   } ]
