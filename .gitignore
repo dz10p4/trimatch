@@ -4,5 +4,3 @@ panel/node_modules
 panel/build
 .DS_Store
 .firebase
-panel/package.json
-panel/package-lock.json
