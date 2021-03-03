@@ -1,0 +1,51 @@
+.list {
+	display: flex;
+	flex-direction: column;
+	background: rgb(44, 44, 44);
+	font-size: 0.9rem;
+}
+
+.person {
+	display: flex;
+	flex-direction: row;
+	/* height: 32px; */
+	height: 2rem;
+	justify-content: left;
+	background: rgb(190, 190, 190);
+	margin-top: 2px;
+	user-select: text;
+}
+
+.name {
+	padding-left: 1rem;
+	width: 10rem;
+}
+.year {
+	width: 9rem;
+}
+.profile {
+	width: 7rem;
+}
+.gender {
+	width: 4rem;
+}
+.lookingFor {
+	width: 3rem;
+	justify-content: center;
+}
+.email {
+	width: 17rem;
+}
+/* .social {
+	width: 15rem;
+} */
+
+.personHeader {
+	background: rgb(77, 146, 250);
+	user-select: none;
+}
+
+.value {
+	display: flex;
+	align-items: center;
+}
