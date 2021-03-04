@@ -13,8 +13,8 @@ function Navbar({handlerFunction, currentState}) {
                 <select name="selector" className="selector" onChange={handlerFunction} value={currentState}>
                     <optgroup label="Listy:">
                         <option id="s1" value="1">Wszystkie osoby wpisane</option>
-                        <option id="s2">Osoby dobrane</option>
-                        <option id="s3">Wysyłanie dobranych osób</option>
+                        <option id="s2" value="2">Osoby dobrane</option>
+                        <option id="s3" value="3">Wysyłanie dobranych osób</option>
                     </optgroup>
                     <optgroup label="Dobieranie:">
                         <option id="s4" value="4">Dobieraj</option>

@@ -1,0 +1,49 @@
+.list {
+	display: flex;
+	flex-direction: column;
+	background: rgb(44, 44, 44);
+	font-size: 0.9rem;
+}
+
+.person {
+	display: flex;
+	flex-direction: row;
+	/* height: 32px; */
+	height: 2rem;
+	justify-content: left;
+	background: rgb(190, 190, 190);
+	margin-top: 2px;
+	user-select: text;
+}
+
+.fperson {
+	padding-left: 1rem;
+	width: 15rem;
+}
+.sperson {
+	width: 15rem;
+}
+.points {
+	width: 5rem;
+}
+.cancelbutton {
+	width: 15rem;
+}
+.clickable {
+	cursor: pointer;
+	background-color: rgb(248, 118, 118);
+	width: max-content;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+
+.personHeader {
+	background: rgb(77, 146, 250);
+	user-select: none;
+}
+
+.value {
+	display: flex;
+	align-items: center;
+}
