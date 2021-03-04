@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 // import "firebase/auth";
 import "firebase/firestore";
 import { useState, useEffect } from "react";
+import { db } from "./Firebase.config.js";
 
 var firebaseConfig = {
 	apiKey: "AIzaSyCJMWn5UpHTVEKDE-gDpxVB4r91H6mUK8s",
@@ -17,7 +18,7 @@ var firebaseConfig = {
 
 //firebase.initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
+//const db = firebase.firestore();
 
 var peopleRef = db.collection("users");
 
