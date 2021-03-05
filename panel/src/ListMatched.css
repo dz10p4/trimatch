@@ -29,18 +29,27 @@
 .cancelbutton {
 	width: 15rem;
 }
-.clickable {
+.clickablec {
 	cursor: pointer;
 	background-color: rgb(248, 118, 118);
 	width: max-content;
 	padding-left: 5px;
 	padding-right: 5px;
 }
-
+.clickablep {
+	cursor: pointer;
+	background-color: rgb(131, 243, 116);
+	width: max-content;
+	padding-left: 5px;
+	padding-right: 5px;
+}
 
 .personHeader {
 	background: rgb(77, 146, 250);
 	user-select: none;
+}
+.confirmbutton {
+	width:10em;
 }
 
 .value {
