@@ -48,7 +48,7 @@ function Match() {
     peopleCollection[currentRightPerson].partners.push(currentRightPerson);
     db.collection("matched")
       .doc(
-        `${currentLeftPerson}:${currentRightPerson}`
+       `${currentLeftPerson}:${currentRightPerson}`
       )
       .set(
         {
