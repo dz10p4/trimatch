@@ -4,18 +4,18 @@ import "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db } from "./Firebase.config.js";
 
-var peopleRef = db.collection("matched");
-var testRef = db.collection("test");
+var matchedRef = db.collection("matched");
+var peopleRef = db.collection("users");
 
 
 
 function ListMatched() {
-  const [peopleCollection, setPeopleCollection] = useState({});
+  const [matchedCollection, setMatchedCollection] = useState({});
   useEffect(() => {
-    peopleRef.get().then((querySnapshot) => {
+    matchedRef.get().then((querySnapshot) => {
       let documents = new Object();
       querySnapshot.docs.forEach((doc) => (documents[doc.id] = doc.data()));
-      setPeopleCollection(documents);
+      setMatchedCollection(documents);
     });
   }, []);
 
@@ -25,37 +25,37 @@ function ListMatched() {
 
   function cancelMatch(documentID) {
     const peopleIDs = documentID.split(":");
-    const firperson = peopleIDs[0];
-    const secperson = peopleIDs[1];
+    const firPerson = peopleIDs[0];
+    const secPerson = peopleIDs[1];
 
-    peopleRef.doc(documentID).delete();
-
-    testRef
-      .doc(firperson)
+    peopleRef
+      .doc(firPerson)
       .update({
-        partner: firebase.firestore.FieldValue.arrayRemove(secperson)//partner.filter((part) => part !== secperson),
+        partners: firebase.firestore.FieldValue.arrayRemove(secPerson)//partners.filter((part) => part !== secPerson),
       });
 
-    testRef
-      .doc(secperson)
+    peopleRef
+      .doc(secPerson)
       .update({
-        partner: firebase.firestore.FieldValue.arrayRemove(firperson)//partner.filter((part) => part !== firperson),
+        partners: firebase.firestore.FieldValue.arrayRemove(firPerson)//partners.filter((part) => part !== firPerson),
       });
 
-    testRef.doc(firperson).get().then(doc => {
-      const partnerArray = doc.partner;
-      testRef.doc(firperson).update({
-        matched: partnerArray.length === 0 ? false : true,
+    peopleRef.doc(firPerson).get().then(doc => {
+      const partnersArray = doc.data().partners;
+      const isMatched = partnersArray.length === 0 ? false : true;
+      peopleRef.doc(firPerson).update({
+        matched: isMatched,
       });
     });
 
-    testRef.doc(secperson).get().then(doc => {
-      const partnerArray = doc.partner;
-      testRef.doc(secperson).update({
-        matched: partnerArray.length === 0 ? false : true,
+    peopleRef.doc(secPerson).get().then(doc => {
+      const partnersArray = doc.data().partners;
+      const isMatched = partnersArray.length === 0 ? false : true;
+      peopleRef.doc(secPerson).update({
+        matched: isMatched,
       });
     });
-
+    matchedRef.doc(documentID).delete();
   }
 
   function confirmMatch(documentID) {
@@ -68,11 +68,6 @@ function ListMatched() {
     db.collection("users").doc(person2ID).get().then((doc) => {
       setPerson2(doc.data());
     });
-    console.log(person1);
-    //documentID - id1:id2
-    //fpersonID - id1
-    //spersonID - id2
-
     // wysłać maila do osoby 1
     db.collection("mail")
       .add({
@@ -81,9 +76,7 @@ function ListMatched() {
           subject: "Twój wymarzony match",
           html: '<html lang="pl"><head><meta charset="UTF-8"></head><body style="margin: 0;"><div style="background: #fcd0d5; text-align: center; padding-top: 32px; padding-bottom: 32px; color: black; font-family: Arial, Helvetica, sans-serif;"><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 16px; margin-bottom: 16px;"><img src="https://trimatch.date/mail_logo.png" /></div><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 10px; margin-bottom: 16px;"><h2>Hej ' + person1.name + '!</h2><p style="font-size: large;">Pora na ujawnienie Twojego wymarzonego matcha!</p><p style="font-size: large;">Osoba, do której pasujesz to:</p><p style="font-size: large;">' + person2.fullName + '</p><p style="font-size: large;">Dane kontaktowe dopasowanej osoby:</p><p style="font-size: large;">' + person2.social + '</p></div></div></body></html>',
         }
-      })
-      .then(() => console.log("Queued email for delivery!"));
-
+      });
     // wysłać maila do osoby 2
     db.collection("mail")
       .add({
@@ -92,11 +85,13 @@ function ListMatched() {
           subject: "Twój wymarzony match",
           html: '<html lang="pl"><head><meta charset="UTF-8"></head><body style="margin: 0;"><div style="background: #fcd0d5; text-align: center; padding-top: 32px; padding-bottom: 32px; color: black; font-family: Arial, Helvetica, sans-serif;"><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 16px; margin-bottom: 16px;"><img src="https://trimatch.date/mail_logo.png" /></div><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 10px; margin-bottom: 16px;"><h2>Hej ' + person2.name + '!</h2><p style="font-size: large;">Pora na ujawnienie Twojego wymarzonego matcha!</p><p style="font-size: large;">Osoba, do której pasujesz to:</p><p style="font-size: large;">' + person1.fullName + '</p><p style="font-size: large;">Dane kontaktowe dopasowanej osoby:</p><p style="font-size: large;">' + person1.social + '</p></div></div></body></html>',
         }
-      })
-      .then(() => console.log("Queued email for delivery!"));
-
+      });
     // zatwierdzić połączenie
-    db.collection("matched").doc(documentID).set( { confirmed: true }, { merge: true } );
+    db.collection("matched").doc(documentID).set({ confirmed: true }, { merge: true });
+
+    let newCollection = matchedCollection;
+    delete newCollection[documentID];
+    setMatchedCollection(newCollection);
   }
 
   return (
@@ -108,19 +103,25 @@ function ListMatched() {
         <div className="value cancelbutton">Anuluj matcha</div>
         <div className="value confirmbutton">Potwierdź matcha</div>
       </div>
-      {Object.entries(peopleCollection).map(([key, value]) => (
+      {Object.entries(matchedCollection).map(([key, value]) => (
         <>
-          <div key={key} className="person">
+          <div key={key} className={value.confirmed ? "person person-disabled" : "person"}>
             <div className="value fperson">{value.fperson}</div>
             <div className="value sperson">{value.sperson}</div>
             <div className="value points">{value.points}</div>
             <div className="value cancelbutton">
-              <span className="clickablec" onClick={() => cancelMatch(key)}>
+              <span
+                className={value.confirmed ? "clickablec clickable-disabled" : "clickablec"}
+                onClick={value.confirmed ? null : () => cancelMatch(key)}
+              >
                 Anuluj
               </span>
             </div>
             <div className="value confirmbutton">
-              <span className="clickablep" onClick={() => confirmMatch(key)}>
+              <span
+                className={value.confirmed ? "clickablep clickable-disabled" : "clickablep"}
+                onClick={value.confirmed ? null : () => confirmMatch(key)}
+              >
                 Potwierdź
               </span>
             </div>

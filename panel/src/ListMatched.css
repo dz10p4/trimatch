@@ -8,7 +8,6 @@
 .person {
 	display: flex;
 	flex-direction: row;
-	/* height: 32px; */
 	height: 2rem;
 	justify-content: left;
 	background: rgb(190, 190, 190);
@@ -35,6 +34,7 @@
 	width: max-content;
 	padding-left: 5px;
 	padding-right: 5px;
+	user-select: none;
 }
 .clickablep {
 	cursor: pointer;
@@ -42,6 +42,16 @@
 	width: max-content;
 	padding-left: 5px;
 	padding-right: 5px;
+	user-select: none;
+}
+
+.clickable-disabled {
+	cursor: not-allowed;
+	background-color: #666;
+}
+
+.person-disabled {
+	background: #777;
 }
 
 .personHeader {
