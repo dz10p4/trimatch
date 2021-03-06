@@ -9,8 +9,6 @@ import ListMatched from './ListMatched';
 
 function App() {
 
-    
-
     const [currentSelection, setCurrentSelection] = useState("1");
 
     const handleSelect = event => {

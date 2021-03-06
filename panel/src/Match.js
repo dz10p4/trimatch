@@ -61,7 +61,7 @@ function Match() {
         { merge: true }
       );
 
-    db.collection("test").doc(currentLeftPerson).set(
+    db.collection("users").doc(currentLeftPerson).set(
       {
         matched: true,
         partners: firebase.firestore.FieldValue.arrayUnion( currentRightPerson )
@@ -69,7 +69,7 @@ function Match() {
       { merge: true }
     );
 
-    db.collection("test").doc(currentRightPerson).set(
+    db.collection("users").doc(currentRightPerson).set(
       {
         matched: true,
         partners: firebase.firestore.FieldValue.arrayUnion( currentLeftPerson )
