@@ -56,6 +56,7 @@ function Match() {
           sperson: peopleCollection[currentRightPerson].fullName,
           points:
             peopleCollection[currentLeftPerson].points[currentRightPerson],
+          confirmed: false
         },
         { merge: true }
       );
