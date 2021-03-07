@@ -19,8 +19,8 @@ function ListMatched() {
     });
   }, []);
 
-  const [person1, setPerson1] = useState({});
-  const [person2, setPerson2] = useState({});
+  // const [person1, setPerson1] = useState({});
+  // const [person2, setPerson2] = useState({});
 
 
   function cancelMatch(documentID) {
@@ -62,36 +62,53 @@ function ListMatched() {
     const peopleIDs = documentID.split(":");
     const person1ID = peopleIDs[0];
     const person2ID = peopleIDs[1];
+    console.log(person1ID);
+    console.log(person2ID);
+    let email1, email2, name1, name2, fullName1, fullName2, social1, social2;
     db.collection("users").doc(person1ID).get().then((doc) => {
-      setPerson1(doc.data());
-    });
-    db.collection("users").doc(person2ID).get().then((doc) => {
-      setPerson2(doc.data());
-    });
-    // wysłać maila do osoby 1
-    db.collection("mail")
-      .add({
-        to: person1.email,
-        message: {
-          subject: "Twój wymarzony match",
-          html: '<html lang="pl"><head><meta charset="UTF-8"></head><body style="margin: 0;"><div style="background: #fcd0d5; text-align: center; padding-top: 32px; padding-bottom: 32px; color: black; font-family: Arial, Helvetica, sans-serif;"><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 16px; margin-bottom: 16px;"><img src="https://trimatch.date/mail_logo.png" /></div><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 10px; margin-bottom: 16px;"><h2>Hej ' + person1.name + '!</h2><p style="font-size: large;">Pora na ujawnienie Twojego wymarzonego matcha!</p><p style="font-size: large;">Osoba, do której pasujesz to:</p><p style="font-size: large;">' + person2.fullName + '</p><p style="font-size: large;">Dane kontaktowe dopasowanej osoby:</p><p style="font-size: large;">' + person2.social + '</p></div></div></body></html>',
-        }
-      });
-    // wysłać maila do osoby 2
-    db.collection("mail")
-      .add({
-        to: person2.email,
-        message: {
-          subject: "Twój wymarzony match",
-          html: '<html lang="pl"><head><meta charset="UTF-8"></head><body style="margin: 0;"><div style="background: #fcd0d5; text-align: center; padding-top: 32px; padding-bottom: 32px; color: black; font-family: Arial, Helvetica, sans-serif;"><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 16px; margin-bottom: 16px;"><img src="https://trimatch.date/mail_logo.png" /></div><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 10px; margin-bottom: 16px;"><h2>Hej ' + person2.name + '!</h2><p style="font-size: large;">Pora na ujawnienie Twojego wymarzonego matcha!</p><p style="font-size: large;">Osoba, do której pasujesz to:</p><p style="font-size: large;">' + person1.fullName + '</p><p style="font-size: large;">Dane kontaktowe dopasowanej osoby:</p><p style="font-size: large;">' + person1.social + '</p></div></div></body></html>',
-        }
-      });
-    // zatwierdzić połączenie
-    db.collection("matched").doc(documentID).set({ confirmed: true }, { merge: true });
+      // setPerson1(doc.data());
+      email1 = doc.data().email;
+      // console.log(email1);
+      name1 = doc.data().name;
+      fullName1 = doc.data().fullName;
+      social1 = doc.data().social;
+      db.collection("users").doc(person2ID).get().then((doc) => {
+        // setPerson2(doc.data());
+        email2 = doc.data().email;
+        // console.log(email2);
+        name2 = doc.data().name;
+        fullName2 = doc.data().fullName;
+        social2 = doc.data().social;
+        console.log(email1);
+        console.log(email2);
+        // wysłać maila do osoby 1
+        db.collection("mail")
+          .add({
+            to: email1,
+            message: {
+              subject: "Twój wymarzony match",
+              html: '<html lang="pl"><head><meta charset="UTF-8"></head><body style="margin: 0;"><div style="background: #fcd0d5; text-align: center; padding-top: 32px; padding-bottom: 32px; color: black; font-family: Arial, Helvetica, sans-serif;"><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 16px; margin-bottom: 16px;"><img src="https://trimatch.date/mail_logo.png" /></div><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 10px; margin-bottom: 16px;"><h2>Hej ' + name1 + '!</h2><p style="font-size: large;">Pora na ujawnienie Twojego wymarzonego matcha!</p><p style="font-size: large;">Osoba, do której pasujesz to:</p><p style="font-size: large;">' + fullName2 + '</p><p style="font-size: large;">Dane kontaktowe dopasowanej osoby:</p><p style="font-size: large;">' + social2 + '</p></div></div></body></html>',
+            }
+          });
+        // wysłać maila do osoby 2
+        db.collection("mail")
+          .add({
+            to: email2,
+            message: {
+              subject: "Twój wymarzony match",
+              html: '<html lang="pl"><head><meta charset="UTF-8"></head><body style="margin: 0;"><div style="background: #fcd0d5; text-align: center; padding-top: 32px; padding-bottom: 32px; color: black; font-family: Arial, Helvetica, sans-serif;"><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 16px; margin-bottom: 16px;"><img src="https://trimatch.date/mail_logo.png" /></div><div style="background: white; margin-left: auto; margin-right: auto; max-width: 800px; border-radius: 20px; padding: 10px; margin-bottom: 16px;"><h2>Hej ' + name2 + '!</h2><p style="font-size: large;">Pora na ujawnienie Twojego wymarzonego matcha!</p><p style="font-size: large;">Osoba, do której pasujesz to:</p><p style="font-size: large;">' + fullName1 + '</p><p style="font-size: large;">Dane kontaktowe dopasowanej osoby:</p><p style="font-size: large;">' + social1 + '</p></div></div></body></html>',
+            }
+          });
+        // zatwierdzić połączenie
+        db.collection("matched").doc(documentID).set({ confirmed: true }, { merge: true });
 
-    let newCollection = matchedCollection;
-    delete newCollection[documentID];
-    setMatchedCollection(newCollection);
+        let newCollection = matchedCollection;
+        delete newCollection[documentID];
+        setMatchedCollection(newCollection);
+      });
+    });
+
+
   }
 
   return (
