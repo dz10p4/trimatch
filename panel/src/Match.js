@@ -45,7 +45,7 @@ function Match() {
     peopleCollection[currentLeftPerson].matched = true;
     peopleCollection[currentRightPerson].matched = true;
     peopleCollection[currentLeftPerson].partners.push(currentRightPerson);
-    peopleCollection[currentRightPerson].partners.push(currentRightPerson);
+    peopleCollection[currentRightPerson].partners.push(currentLeftPerson);
     db.collection("matched")
       .doc(
        `${currentLeftPerson}:${currentRightPerson}`
@@ -76,6 +76,8 @@ function Match() {
       },
       { merge: true }
     );
+    setCurrentLeftPerson('');
+    setCurrentRightPerson('');
   }
 
   return (
