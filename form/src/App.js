@@ -39,82 +39,11 @@ function App() {
     "human",
     "mat-fiz",
     "mat-inf",
-    "mat-pol/IB",
-    "spoza Trójki"
+    "mat-pol/IB"
   ];
-  const years = ["1", "2 po podstawówce", "2 po gimnazjum", "3"];
+  const years = ["1", "2", "3 po podst", "3 po gimnazjum"];
   const questions = [
-    {
-      type: "1",
-      name: "Płeć:",
-      answers: ["Kobieta", "Mężczyzna", "Osoba niebinarna"],
-    },
-    {
-      type: "1",
-      name: "Szukasz:",
-      answers: [
-        "Chłopaka",
-        "Dziewczyny",
-        "Przyjaciela",
-        "Związku (płeć nie ma znaczenia)",
-      ],
-    },
-    {
-      type: "2",
-      name: "Twoje zainteresowania:",
-      answers: [
-        "Technologia",
-        "DIY",
-        "Literatura",
-        "Sport",
-        "Motoryzacja",
-        "Kinematografia",
-        "Kulinaria",
-        "Moda",
-        "Muzyka",
-        "Fotografia",
-        "Podróże",
-        "Gry planszowe",
-      ],
-    },
-    {
-      type: "1",
-      name: "Idealne spotkanie:",
-      answers: ["Kino", "Spacer", "Melanż", "Jedzenie", "Uprawianie sportu"],
-    },
-    {
-      type: "1",
-      name: "Czy jesteś wege?",
-      answers: ["Tak", "Nie"],
-    },
-    {
-      type: "1",
-      name: "Ulubiona forma aktywności fizycznej",
-      answers: [
-        "Bieganie",
-        "Piłka nożna",
-        "Koszykówka",
-        "Jazda na rowerze",
-        "Spacer",
-        "Pływanie",
-        "Tenis",
-        "Siłownia",
-        "Pilates",
-      ],
-    },
-    {
-      type: "1",
-      name: "Psy czy koty:",
-      answers: ["Psy", "Koty"],
-    },
-    {
-      type: "3",
-      name: "Ulubiony gatunek muzyczny i artysta",
-    },
-    {
-      type: "3",
-      name: "Ulubiony film:",
-    },
+    
   ];
   const questionCount = questions.length;
 
@@ -124,6 +53,7 @@ function App() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [socialmedia, setSocialmedia] = useState("");
+  const [height, setHeight] = useState("");
 
   function saveForm() {
     setIsFilled(false);
@@ -195,10 +125,10 @@ function App() {
       profil != "Profil" &&
       name != "" &&
       surname != "" &&
-      socialmedia != ""
+      height != ""
     )
       setIsFilled(true);
-  }, [email, rocznik, profil, name, surname, socialmedia]);
+  }, [email, rocznik, profil, name, surname, height]);
 
   useEffect(() => {
     if (currentAnswer) setIsFilled(true);
@@ -222,7 +152,7 @@ function App() {
               <PrimaryButton
                 clickAction={submitQuestion}
                 name={
-                  currentQuestion === 8 ? "Podsumowanie" : "Następne pytanie"
+                  currentQuestion === 2 ? "Podsumowanie" : "Następne pytanie"
                 }
                 isActive={isFilled}
               />
@@ -232,14 +162,14 @@ function App() {
           )
         ) : (
           <>
-            {/* <motion.div
+            { <motion.div
               className="lottie-container"
               ref={lottieContainer}
               animate={isAnimated ? { opacity: 0 } : { opacity: 1 }}
               transition={{ delay: 1.5 }}
-            /> */}
-            <p className="message">Zapisy zakończone. Dziękujemy wszystkim za wpisanie się.</p>
-            {/* <motion.div
+            /> }
+            {/*<p className="message">Zapisy zakończone. Dziękujemy wszystkim za wpisanie się.</p>*/}
+            { <motion.div
               className="text-fields"
               animate={
                 isAnimated ? { opacity: 0, y: -50 } : { opacity: 1, y: 0 }
@@ -281,18 +211,27 @@ function App() {
                 className="short-version"
               />
               <TextField
-                type="text"
-                placeholder="Twoje social media"
-                value={socialmedia}
-                setValue={setSocialmedia}
-                className="short-version"
+                  type="text"
+                  placeholder="Wzrost w cm (sama liczba)"
+                  value={height}
+                  setValue={setHeight}
+                  className={"short-version"}
+              />
+
+              <Question
+                type={"1"}
+                name={"Płeć"}
+                answers={["Dziewczyna","Chłopak"]}
+                setAnswer={setCurrentAnswer}
+                currentAnswer={currentAnswer}
+                currentQuestion={currentQuestion}
               />
               <PrimaryButton
                 clickAction={saveForm}
                 name="Zarejestruj się"
                 isActive={isFilled}
               />
-            </motion.div> */}
+            </motion.div> }
           </>
         )}
       </div>

@@ -1,7 +1,7 @@
 .question-container {
   width: min(500px, 100%);
   display: grid;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 0% 80%;
   grid-template-columns: 100%;
   justify-items: center;
   max-height: 80%;
@@ -15,7 +15,7 @@
 .answers {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   padding: 5px;
   justify-items: center;
   overflow-y: auto;

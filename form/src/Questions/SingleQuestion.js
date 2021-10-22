@@ -18,7 +18,7 @@ function SingleQuestion(props) {
 
   return (
     <div className="question-container">
-      <h3 className="question-label">{props.name}</h3>
+      <h3 className="question-label"></h3>
       <div className="answers">{answers}</div>
     </div>
   );
