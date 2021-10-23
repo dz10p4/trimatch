@@ -5,6 +5,7 @@
   grid-template-columns: 100%;
   justify-items: center;
   max-height: 80%;
+  margin-top: 20px;
 }
 
 .question-label {
@@ -19,14 +20,11 @@
   padding: 5px;
   justify-items: center;
   overflow-y: auto;
+  height: fit-content;
 }
 
 @media (max-width: 767px) {
   .answers {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .question-container {
-    margin-top: 20px;
   }
 }

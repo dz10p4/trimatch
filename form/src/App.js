@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect, useRef } from "react";
 import firebase from "firebase/app";
 import "firebase/functions";
+import "firebase/firestore";
 import TextField from "./Fields/TextField";
 import ListSelector from "./Fields/ListSelector";
 import PrimaryButton from "./Buttons/PrimaryButton";
@@ -13,17 +14,17 @@ import Question from "./Questions/Question";
 import RegistrationSuccessful from "./RegistrationSuccessful";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCJMWn5UpHTVEKDE-gDpxVB4r91H6mUK8s",
-  authDomain: "trimatch-b613b.firebaseapp.com",
-  databaseURL: "https://trimatch-b613b.firebaseio.com",
-  projectId: "trimatch-b613b",
-  storageBucket: "trimatch-b613b.appspot.com",
-  messagingSenderId: "441864222282",
-  appId: "1:441864222282:web:27ef1fe7471aba8f3798b3",
-  measurementId: "G-FRQPZDTHMK",
+  apiKey: "AIzaSyDhgu9WE-J7P9oqHm6N6ksl0fl4zFx8RNg",
+  authDomain: "stumatch-12d25.firebaseapp.com",
+  projectId: "stumatch-12d25",
+  storageBucket: "stumatch-12d25.appspot.com",
+  messagingSenderId: "515557187634",
+  appId: "1:515557187634:web:74e20bd7a451853d241c2b",
+  measurementId: "G-RVCD3B89MD"
 };
 
 firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
 
 function App() {
   const [isFilled, setIsFilled] = useState(false);
@@ -56,6 +57,19 @@ function App() {
   const [height, setHeight] = useState("");
 
   function saveForm() {
+    if(rocznik=='3 po gimnazjum')var rocznikw=32;
+    else if(rocznik=='3 po podst')var rocznikw=31;
+    else rocznikw=rocznik;
+
+    db.collection("people").doc(name+"-"+surname).set({
+      name: name,
+      surname: surname,
+      year: rocznikw,
+      email: email,
+      gender: currentAnswer,
+      height: height
+      
+  },{merge: true});
     setIsFilled(false);
     setIsAnimated(true);
     setTimeout(() => {
@@ -86,6 +100,10 @@ function App() {
   const lottieContainer = useRef(null);
 
   function submitQuestion() {
+    
+
+
+
     if (questions[currentQuestion].type === "1") {
       const ans = questions[currentQuestion].answers[currentAnswer];
       setCurrentAnswer(ans);
@@ -99,40 +117,43 @@ function App() {
 
   useEffect(() => {
     if (currentQuestion === questionCount) {
-      const saveData = firebase.functions().httpsCallable("registerUser");
-      saveData({
-        name: name,
-        surname: surname,
-        profile: profil,
-        year: rocznik,
-        email: email,
-        social: socialmedia,
-        answers: answers,
-      })
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err.data);
-        });
-    }
+    //   const saveData = firebase.functions().httpsCallable("registerUser");
+    //   saveData({
+    //     name: name,
+    //     surname: surname,
+    //     profile: profil,
+    //     year: rocznik,
+    //     email: email,
+    //     social: socialmedia,
+    //     answers: answers,
+    //   })
+    //     .then((res) => {
+    //       console.log(res.data);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err.data);
+    //     });
+    // }
+   
+}
+
   }, [currentQuestion]);
 
   useEffect(() => {
     if (
       email != "" &&
       rocznik != "Rocznik" &&
-      profil != "Profil" &&
       name != "" &&
       surname != "" &&
-      height != ""
+      height != "" &&
+      currentAnswer != null
     )
       setIsFilled(true);
-  }, [email, rocznik, profil, name, surname, height]);
+  }, [email, rocznik, name, surname, height, currentAnswer]);
 
-  useEffect(() => {
-    if (currentAnswer) setIsFilled(true);
-  }, [currentAnswer]);
+  // useEffect(() => {
+  //   if (currentAnswer) setIsFilled(true);
+  // }, [currentAnswer]);
 
   return (
     <div className="App">
@@ -189,13 +210,8 @@ function App() {
                   setValue={setSurname}
                 />
               </div>
-              <div className="double-text-field">
-                <ListSelector
-                  setValue={setProfil}
-                  selectOptions={profiles}
-                  selectName="Profil"
-                  value={profil}
-                />
+              <div className="single-text-field">
+                
                 <ListSelector
                   setValue={setRocznik}
                   selectOptions={years}
@@ -211,8 +227,8 @@ function App() {
                 className="short-version"
               />
               <TextField
-                  type="text"
-                  placeholder="Wzrost w cm (sama liczba)"
+                  type="number"
+                  placeholder="Wzrost w cm"
                   value={height}
                   setValue={setHeight}
                   className={"short-version"}
