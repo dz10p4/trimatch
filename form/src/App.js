@@ -87,6 +87,9 @@ function App() {
     }, 2000);
   }
 
+  
+
+
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 767;
 
@@ -100,10 +103,6 @@ function App() {
   const lottieContainer = useRef(null);
 
   function submitQuestion() {
-    
-
-
-
     if (questions[currentQuestion].type === "1") {
       const ans = questions[currentQuestion].answers[currentAnswer];
       setCurrentAnswer(ans);
@@ -232,8 +231,12 @@ function App() {
                   value={height}
                   setValue={setHeight}
                   className={"short-version"}
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
               />
-
               <Question
                 type={"1"}
                 name={"Płeć"}

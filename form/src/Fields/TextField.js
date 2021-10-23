@@ -8,6 +8,7 @@ function TextField(props) {
       value={props.value}
       onChange={(e) => props.setValue(e.target.value)}
       className={props.className}
+      onKeyPress={props.onKeyPress}
     />
   );
 }
