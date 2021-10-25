@@ -11,6 +11,7 @@
 .question-label {
   user-select: none;
   pointer-events: none;
+  display: none;
 }
 
 .answers {

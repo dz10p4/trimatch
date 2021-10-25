@@ -55,6 +55,8 @@ function App() {
   const [surname, setSurname] = useState("");
   const [socialmedia, setSocialmedia] = useState("");
   const [height, setHeight] = useState("");
+  const [gender, setGender] = useState("1");
+  const [currentGender, setCurrentGender] = useState("1");
 
   function saveForm() {
     if(rocznik=='3 po gimnazjum')var rocznikw=32;
@@ -66,7 +68,7 @@ function App() {
       surname: surname,
       year: rocznikw,
       email: email,
-      gender: currentAnswer,
+      gender: gender,
       height: height
       
   },{merge: true});
@@ -145,14 +147,18 @@ function App() {
       name != "" &&
       surname != "" &&
       height != "" &&
-      currentAnswer != null
+      gender != null
     )
       setIsFilled(true);
-  }, [email, rocznik, name, surname, height, currentAnswer]);
+  }, [email, rocznik, name, surname, height, gender]);
 
   // useEffect(() => {
   //   if (currentAnswer) setIsFilled(true);
   // }, [currentAnswer]);
+
+  const handleChange = event => {
+    setCurrentGender(event.target.value);
+  };
 
   return (
     <div className="App">
@@ -225,9 +231,17 @@ function App() {
                 setValue={setEmail}
                 className="short-version"
               />
+              <Question
+                type={"1"}
+                name={"Płeć"}
+                answers={["Dziewczyna","Chłopak"]}
+                setAnswer={setGender}
+                currentAnswer={gender}
+                currentQuestion={currentQuestion}
+              />
               <TextField
                   type="number"
-                  placeholder="Wzrost w cm"
+                  placeholder={gender === 'Dziewczyna' ? 'Przybliżony wzrost w studniówkowych obcasach w cm' : 'Wzrost w cm'}
                   value={height}
                   setValue={setHeight}
                   className={"short-version"}
@@ -236,14 +250,6 @@ function App() {
                       event.preventDefault();
                     }
                   }}
-              />
-              <Question
-                type={"1"}
-                name={"Płeć"}
-                answers={["Dziewczyna","Chłopak"]}
-                setAnswer={setCurrentAnswer}
-                currentAnswer={currentAnswer}
-                currentQuestion={currentQuestion}
               />
               <PrimaryButton
                 clickAction={saveForm}
