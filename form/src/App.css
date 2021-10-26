@@ -106,4 +106,5 @@ input[type=number] {
   margin-left: 10px;
   text-align: center;
   grid-row: 3;
+  user-select: none;
 }

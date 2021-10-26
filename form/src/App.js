@@ -61,15 +61,27 @@ function App() {
   function saveForm() {
     if(rocznik=='3 po gimnazjum')var rocznikw=32;
     else if(rocznik=='3 po podst')var rocznikw=31;
-    else rocznikw=rocznik;
+    else var rocznikw=rocznik;
 
-    db.collection("people").doc(name+"-"+surname).set({
-      name: name,
-      surname: surname,
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    var hh = today.getHours();
+    var mi = today.getMinutes();
+    var ss = today.getSeconds();
+
+    today = dd + '/' + mm + '/' + yyyy + ' ' + hh + ':' + mi + ':' + ss;
+
+
+    db.collection(gender === 1 ? 'Chlopaki' : 'Dziewczyny').doc(name.replace(/\s/g, '')+"-"+surname.replace(/\s/g, '')).set({
+      name: name.replace(/\s/g, ''),
+      surname: surname.replace(/\s/g, ''),
       year: rocznikw,
-      email: email,
+      email: email.replace(/\s/g, ''),
       gender: gender,
-      height: height
+      height: height,
+      timestamp: today
       
   },{merge: true});
     setIsFilled(false);
@@ -151,6 +163,8 @@ function App() {
       name != "" &&
       surname != "" &&
       height != "" &&
+      height >= 120 &&
+      height <= 230 &&
       gender != null &&
       validateEmail(email)
     )
@@ -162,7 +176,9 @@ function App() {
       !validateEmail(email) ||
       name === "" ||
       surname === "" ||
-      height === ""   
+      height === ""  ||
+      height > 230 ||
+      height < 120 
     )
       setIsFilled(false);
   },[email, name, surname, height]);
