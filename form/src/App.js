@@ -67,14 +67,18 @@ function App() {
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
-    var hh = today.getHours();
-    var mi = today.getMinutes();
-    var ss = today.getSeconds();
+    var hh = today.getHours() < 10 ? '0'+today.getHours() : today.getHours();
+    var mi = today.getMinutes() < 10 ? '0'+today.getMinutes() : today.getMinutes();
+    var ss = today.getSeconds() < 10 ? '0'+today.getSeconds() : today.getSeconds();
 
     today = dd + '/' + mm + '/' + yyyy + ' ' + hh + ':' + mi + ':' + ss;
 
-
-    db.collection(gender === 1 ? 'Chlopaki' : 'Dziewczyny').doc(name.replace(/\s/g, '')+"-"+surname.replace(/\s/g, '')).set({
+    var colName1 = rocznikw === 32 ? '' : 'Rezerwowe-';
+    var colName2 = gender === 1 ? 'Chlopaki' : 'Dziewczyny';
+    var colName3 = rocznikw === 32 ? '' : rocznikw > 3 ? '-3' : '-'+rocznikw; 
+    colName2=colName1+colName2;
+    
+    db.collection(colName2).doc(name.replace(/\s/g, '')+"-"+surname.replace(/\s/g, '')+colName3).set({
       name: name.replace(/\s/g, ''),
       surname: surname.replace(/\s/g, ''),
       year: rocznikw,
@@ -82,8 +86,9 @@ function App() {
       gender: gender,
       height: height,
       timestamp: today
-      
-  },{merge: true});
+    },{merge: true});
+
+
     setIsFilled(false);
     setIsAnimated(true);
     setTimeout(() => {
