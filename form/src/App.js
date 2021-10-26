@@ -140,17 +140,32 @@ function App() {
 
   }, [currentQuestion]);
 
+  function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
   useEffect(() => {
     if (
-      email != "" &&
       rocznik != "Rocznik" &&
       name != "" &&
       surname != "" &&
       height != "" &&
-      gender != null
+      gender != null &&
+      validateEmail(email)
     )
       setIsFilled(true);
   }, [email, rocznik, name, surname, height, gender]);
+
+  useEffect(() => {
+    if (
+      !validateEmail(email) ||
+      name === "" ||
+      surname === "" ||
+      height === ""   
+    )
+      setIsFilled(false);
+  },[email, name, surname, height]);
 
   // useEffect(() => {
   //   if (currentAnswer) setIsFilled(true);
@@ -194,7 +209,7 @@ function App() {
               animate={isAnimated ? { opacity: 0 } : { opacity: 1 }}
               transition={{ delay: 1.5 }}
             /> }
-            {/*<p className="message">Zapisy zakończone. Dziękujemy wszystkim za wpisanie się.</p>*/}
+            {<p className="message">Edycja studniówkowa. Osoby z młodszych klas mile widziane jako rezerwy;)</p>}
             { <motion.div
               className="text-fields"
               animate={
@@ -241,7 +256,7 @@ function App() {
               />
               <TextField
                   type="number"
-                  placeholder={gender === 'Dziewczyna' ? 'Przybliżony wzrost w studniówkowych obcasach w cm' : 'Wzrost w cm'}
+                  placeholder={gender === 0 ? 'Wzrost w obcasach w cm' : 'Wzrost w cm'}
                   value={height}
                   setValue={setHeight}
                   className={"short-version"}
