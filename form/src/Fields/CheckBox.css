@@ -1,0 +1,57 @@
+.checkbox-wrapper {
+    width: 100%;
+    height: 45px;
+    outline: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #000000;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+    max-width: 500px;
+    align-items: center;
+    display: flex;
+
+    border: 1px solid rgba(213, 213, 213, 1);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+    
+    
+
+}
+
+#waltz {
+
+    width: 8%;
+    display: inline-block;
+    user-select: none;
+    margin-top: 0;
+    border: none;
+    box-shadow: none;
+    align-self: auto;
+
+}
+
+#waltzl {
+
+    width: 92%;
+    display: inline-block;
+    user-select: none;
+    margin-top: 0;
+    border: none;
+    box-shadow: none;
+    align-self: auto;
+    text-align: center;
+    
+
+}
+
+.checkbox-label {
+    position: relative;
+    top: 50%;
+  /* -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); */
+
+}

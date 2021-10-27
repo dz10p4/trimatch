@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import lottie from "lottie-web";
 import Question from "./Questions/Question";
 import RegistrationSuccessful from "./RegistrationSuccessful";
+import CheckBox from "./Fields/CheckBox";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDhgu9WE-J7P9oqHm6N6ksl0fl4zFx8RNg",
@@ -287,6 +288,8 @@ function App() {
                     }
                   }}
               />
+              <CheckBox/>
+
               <PrimaryButton
                 clickAction={saveForm}
                 name="Zarejestruj się"
