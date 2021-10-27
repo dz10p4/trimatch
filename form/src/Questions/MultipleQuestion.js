@@ -12,11 +12,11 @@ function MultipleQuestion(props) {
     <Option
       className={
         props.currentAnswer === index
-          ? "option-container active"
-          : "option-container"
+          ? "sl-option-container active"
+          : "sl-option-container"
       }
       key={index}
-      clickAction={setOptions}
+      clickAction={props.setAnswer}
       options={options}
       answer={answer}
       type="2"
@@ -25,8 +25,8 @@ function MultipleQuestion(props) {
 
   return (
     <div className="question-container">
-      <h3 className="question-label">{props.name}</h3>
-      <div className="answers">{answers}</div>
+       <h3 class="question-label"></h3>
+      <div className="sl-answers">{answers}</div>
     </div>
   );
 }

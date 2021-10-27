@@ -7,12 +7,15 @@ function Option(props) {
   const [isSelected, setIsSelected] = useState(false);
 
   function handleClick() {
-    if (isSelected)
-      props.clickAction(
-        props.options.filter((option) => option !== props.answer)
-      );
-    else props.clickAction([...props.options, props.answer]);
+    // if (isSelected)
+    //   setIsSelected(false);
+    //   // props.clickAction(
+    //   //   props.options.filter((option) => option !== props.answer)
+    //   // );
+    // else props.clickAction([...props.options, props.answer]);
+    console.log(isSelected);
     setIsSelected(!isSelected);
+    
   }
 
   if (props.type === "1")
@@ -27,8 +30,8 @@ function Option(props) {
   else if (props.type === "2")
     return (
       <div
-        className={isSelected ? "option-container active" : "option-container"}
-        onClick={() => handleClick()}
+        className={isSelected ? "sl-option-container active" : "sl-option-container"}
+        onClick={() =>{ handleClick(); props.clickAction(isSelected);}}
       >
         <IconContext.Provider value={{ className: "success-icon" }}>
           <IoCheckmarkCircleOutline />

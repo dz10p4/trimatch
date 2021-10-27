@@ -58,6 +58,7 @@ function App() {
   const [height, setHeight] = useState("");
   const [gender, setGender] = useState("1");
   const [currentGender, setCurrentGender] = useState("1");
+  const [dancingWaltz, setDancingWaltz] = useState(false);
 
   function saveForm() {
     if(rocznik=='3 po gimnazjum')var rocznikw=32;
@@ -78,7 +79,7 @@ function App() {
     var colName2 = gender === 1 ? 'Chlopaki' : 'Dziewczyny';
     var colName3 = rocznikw === 32 ? '' : rocznikw > 3 ? '-3' : '-'+rocznikw; 
     colName2=colName1+colName2;
-    
+    console.log(dancingWaltz);
     db.collection(colName2).doc(name.replace(/\s/g, '')+"-"+surname.replace(/\s/g, '')+colName3).set({
       name: name.replace(/\s/g, ''),
       surname: surname.replace(/\s/g, ''),
@@ -86,7 +87,8 @@ function App() {
       email: email.replace(/\s/g, ''),
       gender: gender,
       height: height,
-      timestamp: today
+      timestamp: today,
+      waltz: dancingWaltz
     },{merge: true});
 
 
@@ -253,7 +255,6 @@ function App() {
                 />
               </div>
               <div className="single-text-field">
-                
                 <ListSelector
                   setValue={setRocznik}
                   selectOptions={years}
@@ -288,8 +289,16 @@ function App() {
                     }
                   }}
               />
-              <CheckBox/>
+              {/* <CheckBox/> */}
 
+              <Question
+                type={"2"}
+                name={"Waltz"}
+                answers={["Wyrażam chęć zatańczenia walca"]}
+                setAnswer={setDancingWaltz}
+                currentAnswer={dancingWaltz}
+                currentQuestion={currentQuestion}
+              />
               <PrimaryButton
                 clickAction={saveForm}
                 name="Zarejestruj się"

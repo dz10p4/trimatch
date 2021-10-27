@@ -19,6 +19,7 @@ function Question(props) {
         answers={props.answers}
         setAnswer={props.setAnswer}
         currentAnswer={props.currentAnswer}
+        
       />
     );
   else if (props.type === "3")
