@@ -11,8 +11,7 @@ import Navbar from "./Navbar";
 import { motion } from "framer-motion";
 import lottie from "lottie-web";
 import Question from "./Questions/Question";
-import CheckBox from "./Fields/CheckBox";
-import RadioInput from "./Fields/RadioInput";
+import Waltz from "./Questions/Waltz";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDhgu9WE-J7P9oqHm6N6ksl0fl4zFx8RNg",
@@ -30,7 +29,6 @@ var db = firebase.firestore();
 function App() {
   const [isFilled, setIsFilled] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
   const years = ["1", "2", "3 po podst", "3 po gimnazjum"];
 
   const [email, setEmail] = useState("");
@@ -38,7 +36,7 @@ function App() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [height, setHeight] = useState("");
-  const [gender, setGender] = useState("1");
+  const [gender, setGender] = useState(null);
   const [dancingWaltz, setDancingWaltz] = useState(false);
 
   function saveForm() {
@@ -120,7 +118,8 @@ function App() {
       validateEmail(email)
     )
       setIsFilled(true);
-  }, [email, rocznik, name, surname, height, gender]);
+      console.log(gender, dancingWaltz);
+  }, [email, rocznik, name, surname, height, gender, dancingWaltz]);
 
   useEffect(() => {
     if (!validateEmail(email) || name === "" || surname === "" || height === "" || height > 230 || height < 120)
@@ -159,11 +158,10 @@ function App() {
             answers={["Dziewczyna", "Chłopak"]}
             setAnswer={setGender}
             currentAnswer={gender}
-            currentQuestion={currentQuestion}
           />
           <TextField
             type="number"
-            placeholder={gender === 0 ? "Wzrost w obcasach w cm" : "Wzrost w cm"}
+            placeholder={`${gender === 0 ? "Wzrost + wysokość obuwia" : "Wzrost"} (cm)`}
             value={height}
             setValue={setHeight}
             className="short-version"
@@ -173,15 +171,10 @@ function App() {
               }
             }}
           />
-          {/* <CheckBox/> */}
-
-          <Question
-            type="1"
-            name="Waltz"
-            answers={["Wyrażam chęć zatańczenia walca"]}
-            setAnswer={setDancingWaltz}
-            currentAnswer={dancingWaltz}
-            currentQuestion={currentQuestion}
+          <Waltz
+            answer="Wyrażam chęć zatańczenia walca"
+            setCurrentState={setDancingWaltz}
+            currentState={dancingWaltz}
           />
           <PrimaryButton clickAction={saveForm} name="Zarejestruj się" isActive={isFilled} />
         </motion.div>

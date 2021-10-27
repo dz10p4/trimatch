@@ -1,6 +1,7 @@
 .question-container {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+  grid-column-gap: 10px;
   width: 100%;
   margin-top: 20px;
   max-width: 500px;
@@ -15,5 +16,8 @@
 @media (max-width: 767px) {
   .answers {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .question-container {
+    width: 85vw !important;
   }
 }
