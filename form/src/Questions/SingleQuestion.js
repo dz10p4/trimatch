@@ -4,11 +4,7 @@ import Option from "./Option";
 function SingleQuestion(props) {
   const answers = props.answers.map((answer, index) => (
     <Option
-      className={
-        props.currentAnswer === index
-          ? "option-container active"
-          : "option-container"
-      }
+      className={props.currentAnswer === index ? "option-container active" : "option-container"}
       key={index}
       clickAction={() => props.setAnswer(index)}
       answer={answer}
@@ -16,12 +12,7 @@ function SingleQuestion(props) {
     />
   ));
 
-  return (
-    <div className="question-container">
-      <h3 className="question-label"></h3>
-      <div className="answers">{answers}</div>
-    </div>
-  );
+  return <div className="question-container">{answers}</div>;
 }
 
 export default SingleQuestion;

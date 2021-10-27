@@ -15,15 +15,16 @@ function Option(props) {
     // else props.clickAction([...props.options, props.answer]);
     console.log(isSelected);
     setIsSelected(!isSelected);
-    
   }
 
   if (props.type === "1")
     return (
       <div className={props.className} onClick={() => props.clickAction()}>
-        <IconContext.Provider value={{ className: "success-icon" }}>
-          <IoCheckmarkCircleOutline />
-        </IconContext.Provider>
+        <div className="icon-wrapper">
+          <IconContext.Provider value={{ className: "success-icon" }}>
+            <IoCheckmarkCircleOutline />
+          </IconContext.Provider>
+        </div>
         <p>{props.answer}</p>
       </div>
     );
@@ -31,7 +32,10 @@ function Option(props) {
     return (
       <div
         className={isSelected ? "sl-option-container active" : "sl-option-container"}
-        onClick={() =>{ handleClick(); props.clickAction(isSelected);}}
+        onClick={() => {
+          handleClick();
+          props.clickAction(isSelected);
+        }}
       >
         <IconContext.Provider value={{ className: "success-icon" }}>
           <IoCheckmarkCircleOutline />

@@ -11,8 +11,8 @@ import Navbar from "./Navbar";
 import { motion } from "framer-motion";
 import lottie from "lottie-web";
 import Question from "./Questions/Question";
-import RegistrationSuccessful from "./RegistrationSuccessful";
 import CheckBox from "./Fields/CheckBox";
+import RadioInput from "./Fields/RadioInput";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDhgu9WE-J7P9oqHm6N6ksl0fl4zFx8RNg",
@@ -21,7 +21,7 @@ const firebaseConfig = {
   storageBucket: "stumatch-12d25.appspot.com",
   messagingSenderId: "515557187634",
   appId: "1:515557187634:web:74e20bd7a451853d241c2b",
-  measurementId: "G-RVCD3B89MD"
+  measurementId: "G-RVCD3B89MD",
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -29,68 +29,53 @@ var db = firebase.firestore();
 
 function App() {
   const [isFilled, setIsFilled] = useState(false);
-  const [isRegistered, setIsRegistered] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [currentAnswer, setCurrentAnswer] = useState(null);
-  const [answers, setAnswers] = useState({});
-  const profiles = [
-    "biol-chem-mat",
-    "biol-chem",
-    "mat-geo",
-    "human",
-    "mat-fiz",
-    "mat-inf",
-    "mat-pol/IB"
-  ];
   const years = ["1", "2", "3 po podst", "3 po gimnazjum"];
-  const questions = [
-    
-  ];
-  const questionCount = questions.length;
 
   const [email, setEmail] = useState("");
   const [rocznik, setRocznik] = useState("Rocznik");
-  const [profil, setProfil] = useState("Profil");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
-  const [socialmedia, setSocialmedia] = useState("");
   const [height, setHeight] = useState("");
   const [gender, setGender] = useState("1");
-  const [currentGender, setCurrentGender] = useState("1");
   const [dancingWaltz, setDancingWaltz] = useState(false);
 
   function saveForm() {
-    if(rocznik=='3 po gimnazjum')var rocznikw=32;
-    else if(rocznik=='3 po podst')var rocznikw=31;
-    else var rocznikw=rocznik;
+    if (rocznik == "3 po gimnazjum") var rocznikw = 32;
+    else if (rocznik == "3 po podst") var rocznikw = 31;
+    else var rocznikw = rocznik;
 
     var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0");
     var yyyy = today.getFullYear();
-    var hh = today.getHours() < 10 ? '0'+today.getHours() : today.getHours();
-    var mi = today.getMinutes() < 10 ? '0'+today.getMinutes() : today.getMinutes();
-    var ss = today.getSeconds() < 10 ? '0'+today.getSeconds() : today.getSeconds();
+    var hh = today.getHours() < 10 ? "0" + today.getHours() : today.getHours();
+    var mi = today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes();
+    var ss = today.getSeconds() < 10 ? "0" + today.getSeconds() : today.getSeconds();
 
-    today = dd + '/' + mm + '/' + yyyy + ' ' + hh + ':' + mi + ':' + ss;
+    today = dd + "/" + mm + "/" + yyyy + " " + hh + ":" + mi + ":" + ss;
 
-    var colName1 = rocznikw === 32 ? '' : 'Rezerwowe-';
-    var colName2 = gender === 1 ? 'Chlopaki' : 'Dziewczyny';
-    var colName3 = rocznikw === 32 ? '' : rocznikw > 3 ? '-3' : '-'+rocznikw; 
-    colName2=colName1+colName2;
+    var colName1 = rocznikw === 32 ? "" : "Rezerwowe-";
+    var colName2 = gender === 1 ? "Chlopaki" : "Dziewczyny";
+    var colName3 = rocznikw === 32 ? "" : rocznikw > 3 ? "-3" : "-" + rocznikw;
+    colName2 = colName1 + colName2;
     console.log(dancingWaltz);
-    db.collection(colName2).doc(name.replace(/\s/g, '')+"-"+surname.replace(/\s/g, '')+colName3).set({
-      name: name.replace(/\s/g, ''),
-      surname: surname.replace(/\s/g, ''),
-      year: rocznikw,
-      email: email.replace(/\s/g, ''),
-      gender: gender,
-      height: height,
-      timestamp: today,
-      waltz: dancingWaltz
-    },{merge: true});
-
+    db.collection(colName2)
+      .doc(name.replace(/\s/g, "") + "-" + surname.replace(/\s/g, "") + colName3)
+      .set(
+        {
+          name: name.replace(/\s/g, ""),
+          surname: surname.replace(/\s/g, ""),
+          year: rocznikw,
+          email: email.replace(/\s/g, ""),
+          gender: gender,
+          height: height,
+          timestamp: today,
+          waltz: dancingWaltz,
+        },
+        { merge: true }
+      );
 
     setIsFilled(false);
     setIsAnimated(true);
@@ -103,14 +88,7 @@ function App() {
         animationData: require("./assets/success.json"),
       });
     }, 500);
-
-    setTimeout(() => {
-      setIsRegistered(true);
-    }, 2000);
   }
-
-  
-
 
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 767;
@@ -124,46 +102,11 @@ function App() {
 
   const lottieContainer = useRef(null);
 
-  function submitQuestion() {
-    if (questions[currentQuestion].type === "1") {
-      const ans = questions[currentQuestion].answers[currentAnswer];
-      setCurrentAnswer(ans);
-      console.log(currentAnswer);
-    }
-    setAnswers({ ...answers, [currentQuestion]: currentAnswer });
-    setCurrentAnswer("");
-    setCurrentQuestion(currentQuestion + 1);
-    setIsFilled(false);
-  }
-
-  useEffect(() => {
-    if (currentQuestion === questionCount) {
-    //   const saveData = firebase.functions().httpsCallable("registerUser");
-    //   saveData({
-    //     name: name,
-    //     surname: surname,
-    //     profile: profil,
-    //     year: rocznik,
-    //     email: email,
-    //     social: socialmedia,
-    //     answers: answers,
-    //   })
-    //     .then((res) => {
-    //       console.log(res.data);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err.data);
-    //     });
-    // }
-   
-}
-
-  }, [currentQuestion]);
-
   function validateEmail(email) {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-}
+  }
 
   useEffect(() => {
     if (
@@ -180,133 +123,68 @@ function App() {
   }, [email, rocznik, name, surname, height, gender]);
 
   useEffect(() => {
-    if (
-      !validateEmail(email) ||
-      name === "" ||
-      surname === "" ||
-      height === ""  ||
-      height > 230 ||
-      height < 120 
-    )
+    if (!validateEmail(email) || name === "" || surname === "" || height === "" || height > 230 || height < 120)
       setIsFilled(false);
-  },[email, name, surname, height]);
-
-  // useEffect(() => {
-  //   if (currentAnswer) setIsFilled(true);
-  // }, [currentAnswer]);
-
-  const handleChange = event => {
-    setCurrentGender(event.target.value);
-  };
+  }, [email, name, surname, height]);
 
   return (
     <div className="App">
       {width > breakpoint ? <Logo className="big-logo" /> : <Navbar />}
       <div className="form-section">
-        {isRegistered ? (
-          currentQuestion < questionCount ? (
-            <>
-              <Question
-                type={questions[currentQuestion].type}
-                name={questions[currentQuestion].name}
-                answers={questions[currentQuestion].answers}
-                setAnswer={setCurrentAnswer}
-                currentAnswer={currentAnswer}
-                currentQuestion={currentQuestion}
-              />
-              <PrimaryButton
-                clickAction={submitQuestion}
-                name={
-                  currentQuestion === 2 ? "Podsumowanie" : "Następne pytanie"
-                }
-                isActive={isFilled}
-              />
-            </>
-          ) : (
-            <RegistrationSuccessful />
-          )
-        ) : (
-          <>
-            { <motion.div
-              className="lottie-container"
-              ref={lottieContainer}
-              animate={isAnimated ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ delay: 1.5 }}
-            /> }
-            {<p className="message">Edycja studniówkowa. Osoby z młodszych klas mile widziane jako rezerwy;)</p>}
-            { <motion.div
-              className="text-fields"
-              animate={
-                isAnimated ? { opacity: 0, y: -50 } : { opacity: 1, y: 0 }
+        <motion.div
+          className="lottie-container"
+          ref={lottieContainer}
+          animate={isAnimated ? { opacity: 0 } : { opacity: 1 }}
+          transition={{ delay: 1.5 }}
+        />
+        <p className="message">Edycja studniówkowa. Osoby z młodszych klas mile widziane jako rezerwy;)</p>
+        <motion.div className="text-fields" animate={isAnimated ? { opacity: 0, y: -50 } : { opacity: 1, y: 0 }}>
+          <div className="double-text-field">
+            <TextField type="text" placeholder="Imię" value={name} setValue={setName} />
+            <TextField type="text" placeholder="Nazwisko" value={surname} setValue={setSurname} />
+          </div>
+          <div className="single-text-field">
+            <ListSelector setValue={setRocznik} selectOptions={years} selectName="Rocznik" value={rocznik} />
+          </div>
+          <TextField
+            type="email"
+            placeholder="twój@email.com"
+            value={email}
+            setValue={setEmail}
+            className="short-version"
+          />
+          <Question
+            type="1"
+            name="Płeć"
+            answers={["Dziewczyna", "Chłopak"]}
+            setAnswer={setGender}
+            currentAnswer={gender}
+            currentQuestion={currentQuestion}
+          />
+          <TextField
+            type="number"
+            placeholder={gender === 0 ? "Wzrost w obcasach w cm" : "Wzrost w cm"}
+            value={height}
+            setValue={setHeight}
+            className="short-version"
+            onKeyPress={(event) => {
+              if (!/[0-9]/.test(event.key)) {
+                event.preventDefault();
               }
-            >
-              <div className="double-text-field">
-                <TextField
-                  type="text"
-                  placeholder="Imię"
-                  value={name}
-                  setValue={setName}
-                />
-                <TextField
-                  type="text"
-                  placeholder="Nazwisko"
-                  value={surname}
-                  setValue={setSurname}
-                />
-              </div>
-              <div className="single-text-field">
-                <ListSelector
-                  setValue={setRocznik}
-                  selectOptions={years}
-                  selectName="Rocznik"
-                  value={rocznik}
-                />
-              </div>
-              <TextField
-                type="email"
-                placeholder="twój@email.com"
-                value={email}
-                setValue={setEmail}
-                className="short-version"
-              />
-              <Question
-                type={"1"}
-                name={"Płeć"}
-                answers={["Dziewczyna","Chłopak"]}
-                setAnswer={setGender}
-                currentAnswer={gender}
-                currentQuestion={currentQuestion}
-              />
-              <TextField
-                  type="number"
-                  placeholder={gender === 0 ? 'Wzrost w obcasach w cm' : 'Wzrost w cm'}
-                  value={height}
-                  setValue={setHeight}
-                  className={"short-version"}
-                  onKeyPress={(event) => {
-                    if (!/[0-9]/.test(event.key)) {
-                      event.preventDefault();
-                    }
-                  }}
-              />
-              {/* <CheckBox/> */}
+            }}
+          />
+          {/* <CheckBox/> */}
 
-              <Question
-                type={"2"}
-                name={"Waltz"}
-                answers={["Wyrażam chęć zatańczenia walca"]}
-                setAnswer={setDancingWaltz}
-                currentAnswer={dancingWaltz}
-                currentQuestion={currentQuestion}
-              />
-              <PrimaryButton
-                clickAction={saveForm}
-                name="Zarejestruj się"
-                isActive={isFilled}
-              />
-            </motion.div> }
-          </>
-        )}
+          <Question
+            type="1"
+            name="Waltz"
+            answers={["Wyrażam chęć zatańczenia walca"]}
+            setAnswer={setDancingWaltz}
+            currentAnswer={dancingWaltz}
+            currentQuestion={currentQuestion}
+          />
+          <PrimaryButton clickAction={saveForm} name="Zarejestruj się" isActive={isFilled} />
+        </motion.div>
       </div>
     </div>
   );
