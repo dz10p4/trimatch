@@ -38,6 +38,7 @@ function App() {
   const [height, setHeight] = useState("");
   const [gender, setGender] = useState(null);
   const [dancingWaltz, setDancingWaltz] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   function saveForm() {
     let rocznikw;
@@ -87,6 +88,10 @@ function App() {
         animationData: require("./assets/success.json"),
       });
     }, 500);
+
+    setTimeout(() => {
+      setIsRegistered(true);
+    }, 2000);
   }
 
   const [width, setWidth] = useState(window.innerWidth);
@@ -127,6 +132,10 @@ function App() {
     <div className="App">
       {width > breakpoint ? <Logo className="big-logo" /> : <Navbar />}
       <div className="form-section">
+        {isRegistered ? 
+        <p className="message">Dziękujemy za rejestrację!</p>
+        :
+        <>
         <motion.div
           className="lottie-container"
           ref={lottieContainer}
@@ -175,6 +184,8 @@ function App() {
           />
           <PrimaryButton clickAction={saveForm} name="Zarejestruj się" isActive={isFilled} />
         </motion.div>
+        </>
+        }
       </div>
     </div>
   );
