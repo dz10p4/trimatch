@@ -40,23 +40,24 @@ function App() {
   const [dancingWaltz, setDancingWaltz] = useState(false);
 
   function saveForm() {
-    if (rocznik == "3 po gimnazjum") var rocznikw = 32;
-    else if (rocznik == "3 po podst") var rocznikw = 31;
-    else var rocznikw = rocznik;
+    let rocznikw;
+    if (rocznik == "3 po gimnazjum") rocznikw = 32;
+    else if (rocznik == "3 po podst") rocznikw = 31;
+    else rocznikw = rocznik;
 
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, "0");
-    var mm = String(today.getMonth() + 1).padStart(2, "0");
-    var yyyy = today.getFullYear();
-    var hh = today.getHours() < 10 ? "0" + today.getHours() : today.getHours();
-    var mi = today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes();
-    var ss = today.getSeconds() < 10 ? "0" + today.getSeconds() : today.getSeconds();
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, "0");
+    let mm = String(today.getMonth() + 1).padStart(2, "0");
+    let yyyy = today.getFullYear();
+    let hh = today.getHours() < 10 ? "0" + today.getHours() : today.getHours();
+    let mi = today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes();
+    let ss = today.getSeconds() < 10 ? "0" + today.getSeconds() : today.getSeconds();
 
     today = dd + "/" + mm + "/" + yyyy + " " + hh + ":" + mi + ":" + ss;
 
-    var colName1 = rocznikw === 32 ? "" : "Rezerwowe-";
-    var colName2 = gender === 1 ? "Chlopaki" : "Dziewczyny";
-    var colName3 = rocznikw === 32 ? "" : rocznikw > 3 ? "-3" : "-" + rocznikw;
+    let colName1 = rocznikw === 32 ? "" : "Rezerwowe-";
+    let colName2 = gender === 1 ? "Chlopaki" : "Dziewczyny";
+    let colName3 = rocznikw === 32 ? "" : rocznikw > 3 ? "-3" : "-" + rocznikw;
     colName2 = colName1 + colName2;
     console.log(dancingWaltz);
     db.collection(colName2)
@@ -118,13 +119,9 @@ function App() {
       validateEmail(email)
     )
       setIsFilled(true);
-      console.log(gender, dancingWaltz);
+    else setIsFilled(false);
+       
   }, [email, rocznik, name, surname, height, gender, dancingWaltz]);
-
-  useEffect(() => {
-    if (!validateEmail(email) || name === "" || surname === "" || height === "" || height > 230 || height < 120)
-      setIsFilled(false);
-  }, [email, name, surname, height]);
 
   return (
     <div className="App">
