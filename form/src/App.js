@@ -40,6 +40,31 @@ function App() {
   const [dancingWaltz, setDancingWaltz] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
+  var countDownDate = new Date("Oct 30, 2021 18:00:00").getTime();
+
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+      
+    var distance = countDownDate - now;
+    
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if(hours<10)hours='0'+hours;
+    if(minutes<10)minutes='0'+minutes;
+    if(seconds<10)seconds='0'+seconds;
+    document.getElementById("demo").innerHTML = 'T-' + hours + ":"
+    + minutes + ":" + seconds  ;
+      
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "START (odśwież stronę)";
+    }
+  }, 1000);
+
+
+
   function saveForm() {
     let rocznikw;
     if (rocznik == "3 po gimnazjum") rocznikw = 32;
@@ -72,7 +97,7 @@ function App() {
           gender: gender,
           height: height,
           timestamp: today,
-          waltz: dancingWaltz,
+          // waltz: dancingWaltz,
         },
         { merge: true }
       );
@@ -142,8 +167,8 @@ function App() {
           animate={isAnimated ? { opacity: 0 } : { opacity: 1 }}
           transition={{ delay: 1.5 }}
         />
-        <p className="message">Edycja studniówkowa. Osoby z młodszych klas mile widziane jako rezerwy;)</p>
-        <motion.div className="text-fields" animate={isAnimated ? { opacity: 0, y: -50 } : { opacity: 1, y: 0 }}>
+        <p className="message">Edycja studniówkowa do poloneza. Osoby z młodszych klas mile widziane jako rezerwy;)</p>
+        {/* <motion.div className="text-fields" animate={isAnimated ? { opacity: 0, y: -50 } : { opacity: 1, y: 0 }}>
           <div className="double-text-field">
             <TextField type="text" placeholder="Imię" value={name} setValue={setName} />
             <TextField type="text" placeholder="Nazwisko" value={surname} setValue={setSurname} />
@@ -177,13 +202,15 @@ function App() {
               }
             }}
           />
-          <Waltz
+          {/* <Waltz
             answer="Wyrażam chęć zatańczenia walca"
             setCurrentState={setDancingWaltz}
             currentState={dancingWaltz}
-          />
+          /> * /}
           <PrimaryButton clickAction={saveForm} name="Zarejestruj się" isActive={isFilled} />
-        </motion.div>
+        </motion.div> */}
+        <p className="message">Start o 18:00</p>
+        <p className="message" id="demo"></p>
         </>
         }
       </div>
