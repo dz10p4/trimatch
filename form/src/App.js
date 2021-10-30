@@ -168,7 +168,7 @@ function App() {
           transition={{ delay: 1.5 }}
         />
         <p className="message">Edycja studniówkowa do poloneza. Osoby z młodszych klas mile widziane jako rezerwy;)</p>
-        {/* <motion.div className="text-fields" animate={isAnimated ? { opacity: 0, y: -50 } : { opacity: 1, y: 0 }}>
+        <motion.div className="text-fields" animate={isAnimated ? { opacity: 0, y: -50 } : { opacity: 1, y: 0 }}>
           <div className="double-text-field">
             <TextField type="text" placeholder="Imię" value={name} setValue={setName} />
             <TextField type="text" placeholder="Nazwisko" value={surname} setValue={setSurname} />
@@ -206,11 +206,11 @@ function App() {
             answer="Wyrażam chęć zatańczenia walca"
             setCurrentState={setDancingWaltz}
             currentState={dancingWaltz}
-          /> * /}
+          /> */}
           <PrimaryButton clickAction={saveForm} name="Zarejestruj się" isActive={isFilled} />
-        </motion.div> */}
-        <p className="message">Start o 18:00</p>
-        <p className="message" id="demo"></p>
+        </motion.div>
+        {/* <p className="message">Start o 18:00</p>
+        <p className="message" id="demo"></p> */}
         </>
         }
       </div>
