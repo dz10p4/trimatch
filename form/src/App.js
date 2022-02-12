@@ -60,61 +60,46 @@ function App() {
       ],
     },
     {
-      type: "2",
-      name: "Twoje zainteresowania:",
+      type: "1",
+      name: "Co jest dla ciebie priorytetem w związku?",
       answers: [
-        "Technologia",
-        "DIY",
-        "Literatura",
-        "Sport",
-        "Motoryzacja",
-        "Kinematografia",
-        "Kulinaria",
-        "Moda",
-        "Muzyka",
-        "Fotografia",
-        "Podróże",
-        "Gry planszowe",
+        "wolność",
+        "wierność",
+        "wzajemne wsparcie",
+        "dobra zabawa",
       ],
     },
     {
       type: "1",
-      name: "Idealne spotkanie:",
-      answers: ["Kino", "Spacer", "Melanż", "Jedzenie", "Uprawianie sportu"],
+      name: "Twoja wymarzona randka:",
+      answers: ["Kolacja przy świecach", "Wieczór z dobrym filmem i pizzą", "Piknik w parku", "Wielogodzinny spacer", "Kreatywna i pełna niespodzianek"],
     },
     {
       type: "1",
-      name: "Czy jesteś wege?",
-      answers: ["Tak", "Nie"],
+      name: "Jak odnajdujesz się w towarzystwie rówieśników?",
+      answers: ["Staram się poznać jak najwięcej ludzi", "Trzymam się stałego grona", "Obydwa po trochu"],
     },
     {
       type: "1",
-      name: "Ulubiona forma aktywności fizycznej",
+      name: "Jak głównie spędzasz czas poza szkołą?",
       answers: [
-        "Bieganie",
-        "Piłka nożna",
-        "Koszykówka",
-        "Jazda na rowerze",
-        "Spacer",
-        "Pływanie",
-        "Tenis",
-        "Siłownia",
-        "Pilates",
+        "trenuję sport",
+        "czytam książki",
+        "spędzam czas ze znajomymi",
+        "rozwijam swoje hobby",
+        "oglądam filmy i seriale",
       ],
     },
     {
-      type: "1",
-      name: "Psy czy koty:",
-      answers: ["Psy", "Koty"],
+      type: "3",
+      name: "Co byś zabrał na bezludną wyspę?",
+      
     },
     {
       type: "3",
-      name: "Ulubiony gatunek muzyczny i artysta",
+      name: "A może masz kogoś na oku? Daj nam znać, zobaczymy co da się zrobić;)",
     },
-    {
-      type: "3",
-      name: "Ulubiony film:",
-    },
+    
   ];
   const questionCount = questions.length;
 
@@ -201,7 +186,7 @@ function App() {
   }, [email, rocznik, profil, name, surname, socialmedia]);
 
   useEffect(() => {
-    if (currentAnswer) setIsFilled(true);
+    if(currentAnswer)setIsFilled(true);
   }, [currentAnswer]);
 
   return (
@@ -218,11 +203,11 @@ function App() {
                 setAnswer={setCurrentAnswer}
                 currentAnswer={currentAnswer}
                 currentQuestion={currentQuestion}
-              />
+              />                                                                                                                                                                                                    
               <PrimaryButton
                 clickAction={submitQuestion}
                 name={
-                  currentQuestion === 8 ? "Podsumowanie" : "Następne pytanie"
+                  currentQuestion === questionCount ? "Podsumowanie" : "Następne pytanie"
                 }
                 isActive={isFilled}
               />
@@ -232,14 +217,14 @@ function App() {
           )
         ) : (
           <>
-            {/* <motion.div
+            <motion.div
               className="lottie-container"
               ref={lottieContainer}
               animate={isAnimated ? { opacity: 0 } : { opacity: 1 }}
               transition={{ delay: 1.5 }}
-            /> */}
-            <p className="message">Zapisy zakończone. Dziękujemy wszystkim za wpisanie się.</p>
-            {/* <motion.div
+            />
+            {/* <p className="message">Zapisy zakończone. Dziękujemy wszystkim za wpisanie się.</p> */}
+            <motion.div
               className="text-fields"
               animate={
                 isAnimated ? { opacity: 0, y: -50 } : { opacity: 1, y: 0 }
@@ -292,7 +277,7 @@ function App() {
                 name="Zarejestruj się"
                 isActive={isFilled}
               />
-            </motion.div> */}
+            </motion.div>
           </>
         )}
       </div>
