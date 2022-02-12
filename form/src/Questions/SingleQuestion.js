@@ -5,12 +5,12 @@ function SingleQuestion(props) {
   const answers = props.answers.map((answer, index) => (
     <Option
       className={
-        props.currentAnswer === index
+        props.currentAnswer === index+1
           ? "option-container active"
           : "option-container"
       }
-      key={index}
-      clickAction={() => props.setAnswer(index)}
+      key={index+1}
+      clickAction={() => props.setAnswer(index+1)}
       answer={answer}
       type="1"
     />
