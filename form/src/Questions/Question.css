@@ -1,7 +1,7 @@
 .question-container {
   width: min(500px, 100%);
   display: grid;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: 20% 80%;
   grid-template-columns: 100%;
   justify-items: center;
   max-height: 80%;

@@ -12,6 +12,7 @@ import lottie from "lottie-web";
 import Question from "./Questions/Question";
 import RegistrationSuccessful from "./RegistrationSuccessful";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyCJMWn5UpHTVEKDE-gDpxVB4r91H6mUK8s",
   authDomain: "trimatch-b613b.firebaseapp.com",
@@ -20,10 +21,12 @@ const firebaseConfig = {
   storageBucket: "trimatch-b613b.appspot.com",
   messagingSenderId: "441864222282",
   appId: "1:441864222282:web:27ef1fe7471aba8f3798b3",
-  measurementId: "G-FRQPZDTHMK",
+  measurementId: "G-FRQPZDTHMK"
 };
 
-firebase.initializeApp(firebaseConfig);
+
+const app = firebase.initializeApp(firebaseConfig);
+
 
 function App() {
   const [isFilled, setIsFilled] = useState(false);
@@ -42,7 +45,7 @@ function App() {
     "mat-pol/IB",
     "spoza Trójki"
   ];
-  const years = ["1", "2 po podstawówce", "2 po gimnazjum", "3"];
+  const years = ["1","2", "3 po podstawówce", "3 po gimnazjum"];
   const questions = [
     {
       type: "1",
@@ -55,7 +58,6 @@ function App() {
       answers: [
         "Chłopaka",
         "Dziewczyny",
-        "Przyjaciela",
         "Związku (płeć nie ma znaczenia)",
       ],
     },
@@ -94,10 +96,6 @@ function App() {
       type: "3",
       name: "Co byś zabrał na bezludną wyspę?",
       
-    },
-    {
-      type: "3",
-      name: "A może masz kogoś na oku? Daj nam znać, zobaczymy co da się zrobić;)",
     },
     
   ];
