@@ -1,5 +1,5 @@
 import "./Navbar.css"
-
+import SignOutButton from './SignOutButton';
 function Navbar({handlerFunction, currentState}) {
     return (
 
@@ -8,7 +8,7 @@ function Navbar({handlerFunction, currentState}) {
             <div className="logod">
                 <img src="logo.png" width="100px" height="100px" />
             </div>
-        
+            <SignOutButton/>
             <div className="cselect">
                 <select name="selector" className="selector" onChange={handlerFunction} value={currentState}>
                     <optgroup label="Listy:">
