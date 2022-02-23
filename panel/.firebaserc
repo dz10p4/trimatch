@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "trimatch-b613b"
+  },
+  "targets": {
+    "trimatch-b613b": {
+      "hosting": {
+        "panel": [
+          "trimatch-panel"
+        ]
+      }
+    }
+  }
+}

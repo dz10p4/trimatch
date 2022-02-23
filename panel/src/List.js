@@ -44,7 +44,8 @@ function List() {
 						// key={key}
 						className="person"
 					>
-						<div className="value name">{value.fullName}</div>
+						{/* value.fullName */}
+						<div className="value name">{value.name+' '+value.surname}</div>
 						<div className="value year">{value.year}</div>
 						<div className="value profile">{value.profile}</div>
 						<div className="value gender">{value.gender}</div>
