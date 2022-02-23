@@ -3,7 +3,7 @@ import List from "./List";
 import Navbar from './Navbar';
 import SignInButton from './SignInButton'
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ListMatched from './ListMatched';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -24,11 +24,17 @@ function App() {
         setIsSignedIn(false);
     })
 
+   
+
     const handleSelect = event => {
         setCurrentSelection(event.target.value);
+        if(event.target.value === "3") {
+            firebase.auth().signOut();
+            setCurrentSelection("1");
+        }
     };
 
-    if(isSignedIn === true) {
+    if(isSignedIn) {
         return (
             <>
                 <Navbar handlerFunction={handleSelect} currentState={currentSelection} />
