@@ -17,6 +17,7 @@ function Navbar({handlerFunction, currentState}) {
                     </optgroup>
                     <optgroup label="Dobieranie:">
                         <option id="s4" value="4">Dobieraj</option>
+                        <option id="s5" value="5">Funkcje</option>
                     </optgroup>
                 </select>
             </div>

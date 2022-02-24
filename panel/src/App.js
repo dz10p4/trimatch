@@ -2,6 +2,7 @@ import Match from './Match';
 import List from "./List";
 import Navbar from './Navbar';
 import SignInButton from './SignInButton'
+import ConvertFunctions from './ConvertFunctions';
 import './App.css';
 import { useEffect, useState } from 'react';
 import ListMatched from './ListMatched';
@@ -41,6 +42,7 @@ function App() {
                 {currentSelection === "1" && <List />}
                 {currentSelection === "4" && <Match />}
                 {currentSelection === "2" && <ListMatched />}
+                {currentSelection === "5" && <ConvertFunctions />}
             </>
         );
     }
