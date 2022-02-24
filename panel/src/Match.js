@@ -1,6 +1,6 @@
 import "./Match.css";
 import firebase from "firebase/app";
-import "firebase/auth";
+// import "firebase/auth";
 import "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db } from "./Firebase.config.js";
