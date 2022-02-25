@@ -101,11 +101,11 @@ function Match() {
       <div className="openqp1">
         {currentLeftPerson !== "" && (
           <>
-            <p>Ulubiony gatunek muzyki:</p>
-            <p>{peopleCollection[currentLeftPerson].answers[7]}</p>
+            <p>Co by zabrała na bezludną wyspę:</p>
+            <p>{peopleCollection[currentLeftPerson].answers[6]}</p>
             <br />
-            <p>Ulubiony film:</p>
-            <p>{peopleCollection[currentLeftPerson].answers[8]}</p>
+            {/* <p>Ulubiony film:</p>
+            <p>{peopleCollection[currentLeftPerson].answers[8]}</p> */}
           </>
         )}
       </div>
@@ -139,11 +139,11 @@ function Match() {
       <div className="openqp2">
         {currentRightPerson !== "" && (
           <>
-            <p>Ulubiony gatunek muzyki:</p>
-            <p>{peopleCollection[currentRightPerson].answers[7]}</p>
+            <p>Co by zabrała na bezludną wyspę:</p>
+            <p>{peopleCollection[currentRightPerson].answers[6]}</p>
             <br />
-            <p>Ulubiony film:</p>
-            <p>{peopleCollection[currentRightPerson].answers[8]}</p>
+            {/* <p>Ulubiony film:</p>
+            <p>{peopleCollection[currentRightPerson].answers[8]}</p> */}
           </>
         )}
       </div>
