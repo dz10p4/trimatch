@@ -12,7 +12,7 @@ html, body {
     display: grid;
     grid-template-columns: 220px 350px auto 350px 220px;
     grid-template-rows: 150px auto 130px 100px 100px auto auto;
-    height: calc(100vh - 212px);
+    height: calc(100vh - 232px);
 }
 
 .logod {
