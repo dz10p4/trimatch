@@ -74,12 +74,22 @@ function App() {
     {
       type: "1",
       name: "Twoja wymarzona randka:",
-      answers: ["Kolacja przy świecach", "Wieczór z dobrym filmem i pizzą", "Piknik w parku", "Wielogodzinny spacer", "Kreatywna i pełna niespodzianek"],
+      answers: [
+        "Kolacja przy świecach",
+        "Wieczór z dobrym filmem i pizzą",
+        "Piknik w parku",
+        "Wielogodzinny spacer",
+        "Kreatywna i pełna niespodzianek"
+      ],
     },
     {
       type: "1",
       name: "Jak odnajdujesz się w towarzystwie rówieśników?",
-      answers: ["Staram się poznać jak najwięcej ludzi", "Trzymam się stałego grona", "Obydwa po trochu"],
+      answers: [
+      "Staram się poznać jak najwięcej ludzi",
+      "Trzymam się stałego grona",
+      "Obydwa po trochu"
+    ],
     },
     {
       type: "1",
