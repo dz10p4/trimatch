@@ -98,9 +98,12 @@ function ConvertFunctions() {
 			});
 		});
 	}
-	
+
 	return (
-		<button onClick={convertData()}>convertData</button>
+		<>
+			<button onClick={convertData()}>convertData</button>
+			<button onClick={countPoints()}>countPoints</button>
+		</>
 	);
 }
 
