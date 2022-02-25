@@ -17,7 +17,7 @@ function ListMatched() {
       querySnapshot.docs.forEach((doc) => (documents[doc.id] = doc.data()));
       setMatchedCollection(documents);
     });
-  }, []);
+  }, [matchedCollection]);
 
   // const [person1, setPerson1] = useState({});
   // const [person2, setPerson2] = useState({});
