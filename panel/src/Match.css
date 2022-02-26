@@ -117,21 +117,23 @@ hr {
 }
 
 .openqp1 {
-    grid-row: 7;
+    grid-row: 1 / 8;
     grid-column: 2;
     background-color: #ff9f9f;
     margin: 30px;
     padding-top: 20px;
     padding-left: 5px;
+    height: min-content;
 }
 
 .openqp2 {
-    grid-row: 7;
+    grid-row: 1 / 8;
     grid-column: 4;
     background-color: #69dbff;
     margin: 30px;
     padding-top: 20px;
     padding-left: 5px;
+    height: min-content;
 }
 
 .onatopp1 {
