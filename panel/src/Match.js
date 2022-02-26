@@ -145,6 +145,7 @@ function Match() {
     );
     setCurrentLeftPerson('');
     setCurrentRightPerson('');
+    setMatchedNames([]);
   }
 
   return (
