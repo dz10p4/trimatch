@@ -83,7 +83,8 @@ function ListMatched() {
         console.log(email2);
         // wysłać maila do osoby 1
         db.collection("mail")
-          .add({
+          .doc(documentID + '_1')
+          .set({
             to: email1,
             message: {
               subject: "Twój wymarzony match",
@@ -92,7 +93,8 @@ function ListMatched() {
           });
         // wysłać maila do osoby 2
         db.collection("mail")
-          .add({
+          .doc(documentID + '_2')
+          .set({
             to: email2,
             message: {
               subject: "Twój wymarzony match",
