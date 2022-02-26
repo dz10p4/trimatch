@@ -55,6 +55,14 @@ function ListMatched() {
         matched: isMatched,
       });
     });
+
+    peopleRef.doc(firPerson).get().then(doc => {
+      const partnersArray = doc.data().partners;
+      const isMatched = partnersArray.length === 0 ? false : true;
+      peopleRef.doc(firPerson).update({
+        matched: isMatched,
+      });
+    });
     matchedRef.doc(documentID).delete();
   }
 
