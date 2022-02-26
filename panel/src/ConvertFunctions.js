@@ -99,10 +99,31 @@ function ConvertFunctions() {
 		});
 	}
 
+	function retrySendingEmails() {
+		db.collection("mail").where("delivery.state", "==", "ERROR")
+			.get()
+			.then((querySnapshot) => {
+				querySnapshot.forEach((doc) => {
+					db.collection("mail").doc(doc.id).update({
+						"delivery.state": "RETRY",
+					})
+				});
+			})
+			.then(() => console.log('SUCCESS'))
+			.catch(err => console.log(err))
+	}
+
 	return (
 		<>
-			<button onClick={convertData()}>convertData</button>
-			<button onClick={countPoints()}>countPoints</button>
+			<p>
+				<button onClick={convertData()}>Uzupełnij dane (uruchomić raz po zakończeniu zapisów)</button>
+			</p>
+			<p>
+				<button onClick={countPoints()}>Oblicz punkty (uruchomić raz po uzupełnieniu danych)</button>
+			</p>
+			<p>
+				<button onClick={retrySendingEmails()}>Ponów próbę wysłania maili (uruchomić w przypadku "zatkania" serwera email)</button>
+			</p>
 		</>
 	);
 }
