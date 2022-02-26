@@ -80,10 +80,10 @@ function Match() {
       type: "1",
       name: "Jak odnajdujesz się w towarzystwie rówieśników?",
       answers: [
-      "Staram się poznać jak najwięcej ludzi",
-      "Trzymam się stałego grona",
-      "Obydwa po trochu"
-    ],
+        "Staram się poznać jak najwięcej ludzi",
+        "Trzymam się stałego grona",
+        "Obydwa po trochu"
+      ],
     },
     {
       type: "1",
@@ -99,9 +99,9 @@ function Match() {
     {
       type: "3",
       name: "Co byś zabrał na bezludną wyspę?",
-      
+
     },
-    
+
   ];
 
   function questionAndAnswerToText(question, answer) {
@@ -211,17 +211,17 @@ function Match() {
       <div className="openqp2">
         {currentRightPerson !== "" && (
           <>
-          <p>Priorytet w związku:</p>
-          <p>{questionAndAnswerToText(2, peopleCollection[currentRightPerson].answers[2] - 1)}</p>
-          <p>Wymarzona randka:</p>
-          <p>{questionAndAnswerToText(3, peopleCollection[currentRightPerson].answers[3] - 1)}</p>
-          <p>Towarzystwo:</p>
-          <p>{questionAndAnswerToText(4, peopleCollection[currentRightPerson].answers[4] - 1)}</p>
-          <p>Czas wolny:</p>
-          <p>{questionAndAnswerToText(5, peopleCollection[currentRightPerson].answers[5] - 1)}</p>
-          <p>Co by zabrała na bezludną wyspę:</p>
-          <p>{peopleCollection[currentRightPerson].answers[6]}</p>
-        </>
+            <p>Priorytet w związku:</p>
+            <p>{questionAndAnswerToText(2, peopleCollection[currentRightPerson].answers[2] - 1)}</p>
+            <p>Wymarzona randka:</p>
+            <p>{questionAndAnswerToText(3, peopleCollection[currentRightPerson].answers[3] - 1)}</p>
+            <p>Towarzystwo:</p>
+            <p>{questionAndAnswerToText(4, peopleCollection[currentRightPerson].answers[4] - 1)}</p>
+            <p>Czas wolny:</p>
+            <p>{questionAndAnswerToText(5, peopleCollection[currentRightPerson].answers[5] - 1)}</p>
+            <p>Co by zabrała na bezludną wyspę:</p>
+            <p>{peopleCollection[currentRightPerson].answers[6]}</p>
+          </>
         )}
       </div>
 
