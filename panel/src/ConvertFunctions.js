@@ -1,4 +1,5 @@
 import "./List.css"
+import "./ConvertFunctions.css"
 import firebase from "firebase/app";
 import "firebase/firestore";
 import { useState, useEffect } from "react";
@@ -113,16 +114,34 @@ function ConvertFunctions() {
 			.catch(err => console.log(err))
 	}
 
+	function fixIsMatchedVariable() {
+		db.collection("users")
+			.get()
+			.then((people) => {
+				people.forEach((doc) => {
+					if(doc.data().partners.length === 0 && doc.data().matched === true)
+					{
+						db.collection("users").doc(doc.id).update({"matched": false,})
+					}
+				})
+			})
+			.then(() => {console.log('FIXED')})
+			.catch(err => console.log(err))
+	}
+
 	return (
 		<>
 			<p>
-				<button onClick={convertData()}>Uzupełnij dane (uruchomić raz po zakończeniu zapisów)</button>
+				<button className="firstp" onClick={convertData()}>Uzupełnij dane (uruchomić raz po zakończeniu zapisów)</button>
 			</p>
 			<p>
 				<button onClick={countPoints()}>Oblicz punkty (uruchomić raz po uzupełnieniu danych)</button>
 			</p>
 			<p>
 				<button onClick={retrySendingEmails()}>Ponów próbę wysłania maili (uruchomić w przypadku "zatkania" serwera email)</button>
+			</p>
+			<p>
+				<button onClick={fixIsMatchedVariable()}>Koloruj ludzi którzy są błędnie oznaczeni jako dobrani (uruchomić w razie potrzeby)</button>
 			</p>
 		</>
 	);
